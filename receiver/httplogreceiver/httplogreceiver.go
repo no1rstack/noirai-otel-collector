@@ -9,9 +9,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/SigNoz/signoz-otel-collector/receiver/httplogreceiver/bodyparser"
-	"github.com/SigNoz/signoz-otel-collector/receiver/httplogreceiver/internal/metadata"
 	"github.com/gorilla/mux"
+	"github.com/no1rstack/noirai-otel-collector/receiver/httplogreceiver/bodyparser"
+	"github.com/no1rstack/noirai-otel-collector/receiver/httplogreceiver/internal/metadata"
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/component/componentstatus"
 	"go.opentelemetry.io/collector/config/confighttp"

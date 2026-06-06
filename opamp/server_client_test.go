@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/SigNoz/signoz-otel-collector/signozcol"
 	"github.com/gorilla/websocket"
+	"github.com/no1rstack/noirai-otel-collector/signozcol"
 	"github.com/open-telemetry/opamp-go/protobufs"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

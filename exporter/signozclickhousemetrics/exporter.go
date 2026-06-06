@@ -10,9 +10,9 @@ import (
 	"sync"
 	"time"
 
-	internalmetadata "github.com/SigNoz/signoz-otel-collector/exporter/signozclickhousemetrics/internal/metadata"
-	"github.com/SigNoz/signoz-otel-collector/usage"
 	"github.com/google/uuid"
+	internalmetadata "github.com/no1rstack/noirai-otel-collector/exporter/signozclickhousemetrics/internal/metadata"
+	"github.com/no1rstack/noirai-otel-collector/usage"
 	"go.opencensus.io/stats"
 	"go.opencensus.io/stats/view"
 	"go.opencensus.io/tag"
@@ -31,7 +31,7 @@ import (
 	"go.opentelemetry.io/otel/metric/noop"
 	"go.uber.org/zap"
 
-	pkgfingerprint "github.com/SigNoz/signoz-otel-collector/internal/common/fingerprint"
+	pkgfingerprint "github.com/no1rstack/noirai-otel-collector/internal/common/fingerprint"
 )
 
 var (

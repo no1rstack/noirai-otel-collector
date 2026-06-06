@@ -15,9 +15,9 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.uber.org/zap"
 
-	"github.com/SigNoz/signoz-otel-collector/pkg/metering"
-	v1 "github.com/SigNoz/signoz-otel-collector/pkg/metering/v1"
 	"github.com/google/uuid"
+	"github.com/no1rstack/noirai-otel-collector/pkg/metering"
+	v1 "github.com/no1rstack/noirai-otel-collector/pkg/metering/v1"
 )
 
 // meterConnector records count and size of spans, metrics data points, log records

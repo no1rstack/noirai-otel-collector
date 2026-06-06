@@ -10,9 +10,9 @@ import (
 	"slices"
 	"strings"
 
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
-	"github.com/SigNoz/signoz-otel-collector/utils"
 	"github.com/goccy/go-json"
+	signozstanzahelper "github.com/no1rstack/noirai-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
+	"github.com/no1rstack/noirai-otel-collector/utils"
 
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/entry"
 )
@@ -45,7 +45,7 @@ func (p *Parser) parse(value any) (any, error) {
 		if err != nil {
 			return nil, err
 		}
-	// no need to cover other map types; check comment https://github.com/SigNoz/signoz-otel-collector/pull/584#discussion_r2042020882
+	// no need to cover other map types; check comment https://github.com/no1rstack/noirai-otel-collector/pull/584#discussion_r2042020882
 	case map[string]any:
 		parsedValue = v
 	default:

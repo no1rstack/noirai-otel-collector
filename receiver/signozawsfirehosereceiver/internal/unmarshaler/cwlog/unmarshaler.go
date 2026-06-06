@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package cwlog // import "github.com/SigNoz/signoz-otel-collector/receiver/signozawsfirehosereceiver/internal/unmarshaler/cwlog"
+package cwlog // import "github.com/no1rstack/noirai-otel-collector/receiver/signozawsfirehosereceiver/internal/unmarshaler/cwlog"
 
 import (
 	"bytes"
@@ -12,8 +12,8 @@ import (
 	"go.opentelemetry.io/collector/pdata/plog"
 	"go.uber.org/zap"
 
-	"github.com/SigNoz/signoz-otel-collector/receiver/signozawsfirehosereceiver/internal/unmarshaler"
-	"github.com/SigNoz/signoz-otel-collector/receiver/signozawsfirehosereceiver/internal/unmarshaler/cwlog/compression"
+	"github.com/no1rstack/noirai-otel-collector/receiver/signozawsfirehosereceiver/internal/unmarshaler"
+	"github.com/no1rstack/noirai-otel-collector/receiver/signozawsfirehosereceiver/internal/unmarshaler/cwlog/compression"
 )
 
 const (

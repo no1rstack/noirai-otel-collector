@@ -11,8 +11,8 @@ import (
 	"time"
 
 	"github.com/ClickHouse/clickhouse-go/v2"
-	"github.com/SigNoz/signoz-otel-collector/constants"
 	"github.com/cenkalti/backoff/v4"
+	"github.com/no1rstack/noirai-otel-collector/constants"
 	"go.uber.org/zap"
 )
 

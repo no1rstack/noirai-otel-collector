@@ -3,7 +3,7 @@ package v1
 import (
 	"testing"
 
-	"github.com/SigNoz/signoz-otel-collector/pkg/pdatagen/plogsgen"
+	"github.com/no1rstack/noirai-otel-collector/pkg/pdatagen/plogsgen"
 	"github.com/stretchr/testify/assert"
 	"go.uber.org/zap"
 )

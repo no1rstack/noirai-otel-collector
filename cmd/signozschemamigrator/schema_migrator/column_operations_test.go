@@ -3,7 +3,7 @@ package schemamigrator
 import (
 	"testing"
 
-	"github.com/SigNoz/signoz-otel-collector/utils"
+	"github.com/no1rstack/noirai-otel-collector/utils"
 	"github.com/stretchr/testify/require"
 )
 

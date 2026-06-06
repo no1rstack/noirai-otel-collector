@@ -17,9 +17,9 @@ import (
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
 
-	"github.com/SigNoz/signoz-otel-collector/processor/signoztailsampler/internal/idbatcher"
-	"github.com/SigNoz/signoz-otel-collector/processor/signoztailsampler/internal/sampling"
-	"github.com/SigNoz/signoz-otel-collector/processor/signoztailsampler/internal/timeutils"
+	"github.com/no1rstack/noirai-otel-collector/processor/signoztailsampler/internal/idbatcher"
+	"github.com/no1rstack/noirai-otel-collector/processor/signoztailsampler/internal/sampling"
+	"github.com/no1rstack/noirai-otel-collector/processor/signoztailsampler/internal/timeutils"
 )
 
 const (

@@ -15,7 +15,7 @@ import (
 	"go.opentelemetry.io/collector/exporter"
 	"go.opentelemetry.io/collector/exporter/exporterhelper"
 
-	"github.com/SigNoz/signoz-otel-collector/exporter/signozkafkaexporter/internal/metadata"
+	"github.com/no1rstack/noirai-otel-collector/exporter/signozkafkaexporter/internal/metadata"
 )
 
 const (

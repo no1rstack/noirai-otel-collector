@@ -3,8 +3,8 @@ package signozclickhousemetrics
 import (
 	"testing"
 
-	"github.com/SigNoz/signoz-otel-collector/usage"
 	"github.com/google/uuid"
+	"github.com/no1rstack/noirai-otel-collector/usage"
 	"github.com/stretchr/testify/require"
 	"go.opencensus.io/metric/metricdata"
 )

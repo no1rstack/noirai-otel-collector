@@ -5,8 +5,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	signozstanzaentry "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/entry"
-	"github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/operatortest"
+	signozstanzaentry "github.com/no1rstack/noirai-otel-collector/processor/signozlogspipelineprocessor/stanza/entry"
+	"github.com/no1rstack/noirai-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/operatortest"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/entry"
 )
 

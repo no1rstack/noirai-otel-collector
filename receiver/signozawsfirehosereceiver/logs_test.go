@@ -23,10 +23,10 @@ import (
 	"go.opentelemetry.io/collector/receiver/receivertest"
 	"go.uber.org/zap"
 
-	"github.com/SigNoz/signoz-otel-collector/pkg/pdatagen/plogsgen"
-	"github.com/SigNoz/signoz-otel-collector/receiver/signozawsfirehosereceiver/internal/metadata"
-	"github.com/SigNoz/signoz-otel-collector/receiver/signozawsfirehosereceiver/internal/unmarshaler"
-	"github.com/SigNoz/signoz-otel-collector/receiver/signozawsfirehosereceiver/internal/unmarshaler/unmarshalertest"
+	"github.com/no1rstack/noirai-otel-collector/pkg/pdatagen/plogsgen"
+	"github.com/no1rstack/noirai-otel-collector/receiver/signozawsfirehosereceiver/internal/metadata"
+	"github.com/no1rstack/noirai-otel-collector/receiver/signozawsfirehosereceiver/internal/unmarshaler"
+	"github.com/no1rstack/noirai-otel-collector/receiver/signozawsfirehosereceiver/internal/unmarshaler/unmarshalertest"
 )
 
 type logsRecordConsumer struct {

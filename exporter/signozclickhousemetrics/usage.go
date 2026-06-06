@@ -2,8 +2,8 @@ package signozclickhousemetrics
 
 import (
 	"fmt"
-	"github.com/SigNoz/signoz-otel-collector/usage"
 	"github.com/google/uuid"
+	"github.com/no1rstack/noirai-otel-collector/usage"
 	"go.opencensus.io/metric/metricdata"
 	"go.opencensus.io/stats"
 	"go.opencensus.io/stats/view"

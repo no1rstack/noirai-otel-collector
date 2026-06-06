@@ -6,9 +6,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/SigNoz/signoz-otel-collector/pkg/collectorsimulator/inmemoryexporter"
-	"github.com/SigNoz/signoz-otel-collector/pkg/collectorsimulator/inmemoryreceiver"
 	"github.com/google/uuid"
+	"github.com/no1rstack/noirai-otel-collector/pkg/collectorsimulator/inmemoryexporter"
+	"github.com/no1rstack/noirai-otel-collector/pkg/collectorsimulator/inmemoryreceiver"
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/confmap"
 	"go.opentelemetry.io/collector/confmap/provider/envprovider"

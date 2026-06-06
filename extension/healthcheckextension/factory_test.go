@@ -14,8 +14,8 @@ import (
 	"go.opentelemetry.io/collector/config/confignet"
 	"go.opentelemetry.io/collector/extension/extensiontest"
 
-	"github.com/SigNoz/signoz-otel-collector/extension/healthcheckextension/internal/metadata"
-	"github.com/SigNoz/signoz-otel-collector/internal/common/testutil"
+	"github.com/no1rstack/noirai-otel-collector/extension/healthcheckextension/internal/metadata"
+	"github.com/no1rstack/noirai-otel-collector/internal/common/testutil"
 )
 
 func TestFactory_CreateDefaultConfig(t *testing.T) {
