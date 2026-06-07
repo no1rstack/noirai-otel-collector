@@ -24,4 +24,4 @@ service:
       exporters: [debug]
   telemetry:
       resource:
-          service.instance.id: "signozcol/testdata/config.yaml"
+          service.instance.id: "noiraicol/testdata/config.yaml"

@@ -1,4 +1,4 @@
-type: signozawsfirehose
+type: noiraiawsfirehose
 
 status:
   class: receiver

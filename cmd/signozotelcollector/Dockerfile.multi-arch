@@ -1,7 +1,7 @@
 ARG DEBIAN_SHA="pass-a-valid-docker-sha-otherwise-this-will-fail"
 
 FROM debian@sha256:${DEBIAN_SHA}
-LABEL maintainer="signoz"
+LABEL maintainer="noirai"
 
 ARG OS="linux"
 ARG ARCH
@@ -13,10 +13,10 @@ RUN apt-get update && \
 
 USER ${USER_UID}
 
-COPY ./target/${OS}-${ARCH}/signoz-otel-collector /signoz-otel-collector
+COPY ./target/${OS}-${ARCH}/noirai-otel-collector /noirai-otel-collector
 COPY conf/default.yaml /etc/otel/config.yaml
 
 EXPOSE 4317 4318
 
-ENTRYPOINT [ "/signoz-otel-collector" ]
+ENTRYPOINT [ "/noirai-otel-collector" ]
 CMD ["--config", "/etc/otel/config.yaml"]

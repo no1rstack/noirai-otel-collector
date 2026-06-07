@@ -1,4 +1,4 @@
-type: signozkafkaexporter
+type: noiraikafkaexporter
 
 status:
   class: exporter

@@ -1,4 +1,4 @@
-type: signozclickhousemetrics
+type: noiraiclickhousemetrics
 
 status:
   class: exporter
@@ -6,7 +6,7 @@ status:
     beta:
       - metrics
   distributions:
-    - signoz
+    - noirai
 
 tests:
   config:

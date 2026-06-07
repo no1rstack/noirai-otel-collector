@@ -1,25 +1,25 @@
 package components
 
 import (
-	"github.com/SigNoz/signoz-otel-collector/connectors/signozmeterconnector"
-	"github.com/SigNoz/signoz-otel-collector/exporter/clickhouselogsexporter"
-	"github.com/SigNoz/signoz-otel-collector/exporter/clickhousetracesexporter"
-	"github.com/SigNoz/signoz-otel-collector/exporter/jsontypeexporter"
-	"github.com/SigNoz/signoz-otel-collector/exporter/metadataexporter"
-	"github.com/SigNoz/signoz-otel-collector/exporter/signozclickhousemeter"
-	"github.com/SigNoz/signoz-otel-collector/exporter/signozclickhousemetrics"
-	"github.com/SigNoz/signoz-otel-collector/exporter/signozkafkaexporter"
-	signozhealthcheckextension "github.com/SigNoz/signoz-otel-collector/extension/healthcheckextension"
-	_ "github.com/SigNoz/signoz-otel-collector/pkg/parser/grok"
-	"github.com/SigNoz/signoz-otel-collector/processor/signozllmpricingprocessor"
-	"github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor"
-	"github.com/SigNoz/signoz-otel-collector/processor/signozspanmetricsprocessor"
-	"github.com/SigNoz/signoz-otel-collector/processor/signoztailsampler"
-	"github.com/SigNoz/signoz-otel-collector/processor/signoztransformprocessor"
-	"github.com/SigNoz/signoz-otel-collector/receiver/clickhousesystemtablesreceiver"
-	"github.com/SigNoz/signoz-otel-collector/receiver/httplogreceiver"
-	"github.com/SigNoz/signoz-otel-collector/receiver/signozawsfirehosereceiver"
-	"github.com/SigNoz/signoz-otel-collector/receiver/signozkafkareceiver"
+	"github.com/NoirAI/noirai-otel-collector/connectors/noiraimeterconnector"
+	"github.com/NoirAI/noirai-otel-collector/exporter/clickhouselogsexporter"
+	"github.com/NoirAI/noirai-otel-collector/exporter/clickhousetracesexporter"
+	"github.com/NoirAI/noirai-otel-collector/exporter/jsontypeexporter"
+	"github.com/NoirAI/noirai-otel-collector/exporter/metadataexporter"
+	"github.com/NoirAI/noirai-otel-collector/exporter/noiraiclickhousemeter"
+	"github.com/NoirAI/noirai-otel-collector/exporter/noiraiclickhousemetrics"
+	"github.com/NoirAI/noirai-otel-collector/exporter/noiraikafkaexporter"
+	noiraihealthcheckextension "github.com/NoirAI/noirai-otel-collector/extension/healthcheckextension"
+	_ "github.com/NoirAI/noirai-otel-collector/pkg/parser/grok"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraillmpricingprocessor"
+	"github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraispanmetricsprocessor"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraitailsampler"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraitransformprocessor"
+	"github.com/NoirAI/noirai-otel-collector/receiver/clickhousesystemtablesreceiver"
+	"github.com/NoirAI/noirai-otel-collector/receiver/httplogreceiver"
+	"github.com/NoirAI/noirai-otel-collector/receiver/noiraiawsfirehosereceiver"
+	"github.com/NoirAI/noirai-otel-collector/receiver/noiraikafkareceiver"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/connector/countconnector"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/connector/datadogconnector"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/connector/exceptionsconnector"
@@ -344,8 +344,8 @@ func Components() (otelcol.Factories, error) {
 		tlscheckreceiver.NewFactory(),
 		windowsservicereceiver.NewFactory(),
 		yanggrpcreceiver.NewFactory(),
-		signozkafkareceiver.NewFactory(),
-		signozawsfirehosereceiver.NewFactory(),
+		noiraikafkareceiver.NewFactory(),
+		noiraiawsfirehosereceiver.NewFactory(),
 	}
 
 	exporters := []exporter.Factory{
@@ -354,7 +354,7 @@ func Components() (otelcol.Factories, error) {
 		awss3exporter.NewFactory(),
 		cassandraexporter.NewFactory(),
 		clickhouselogsexporter.NewFactory(),
-		signozclickhousemetrics.NewFactory(),
+		noiraiclickhousemetrics.NewFactory(),
 		clickhousetracesexporter.NewFactory(),
 		debugexporter.NewFactory(),
 		fileexporter.NewFactory(),
@@ -367,11 +367,11 @@ func Components() (otelcol.Factories, error) {
 		prometheusremotewriteexporter.NewFactory(),
 		pulsarexporter.NewFactory(),
 		rabbitmqexporter.NewFactory(),
-		signozkafkaexporter.NewFactory(),
+		noiraikafkaexporter.NewFactory(),
 		syslogexporter.NewFactory(),
 		zipkinexporter.NewFactory(),
 		nopexporter.NewFactory(),
-		signozclickhousemeter.NewFactory(),
+		noiraiclickhousemeter.NewFactory(),
 	}
 
 	processors := []processor.Factory{
@@ -401,15 +401,15 @@ func Components() (otelcol.Factories, error) {
 		resourceprocessor.NewFactory(),
 		schemaprocessor.NewFactory(),
 		sumologicprocessor.NewFactory(),
-		signozspanmetricsprocessor.NewFactory(),
+		noiraispanmetricsprocessor.NewFactory(),
 		spanprocessor.NewFactory(),
 		tailsamplingprocessor.NewFactory(),
 		transformprocessor.NewFactory(),
 		unrollprocessor.NewFactory(),
-		signoztailsampler.NewFactory(),
-		signoztransformprocessor.NewFactory(),
-		signozlogspipelineprocessor.NewFactory(),
-		signozllmpricingprocessor.NewFactory(),
+		noiraitailsampler.NewFactory(),
+		noiraitransformprocessor.NewFactory(),
+		noirailogspipelineprocessor.NewFactory(),
+		noiraillmpricingprocessor.NewFactory(),
 	}
 
 	connectors := []connector.Factory{
@@ -428,7 +428,7 @@ func Components() (otelcol.Factories, error) {
 		slowsqlconnector.NewFactory(),
 		spanmetricsconnector.NewFactory(),
 		sumconnector.NewFactory(),
-		signozmeterconnector.NewFactory(),
+		noiraimeterconnector.NewFactory(),
 	}
 
 	factories, err := CoreComponents(
@@ -472,7 +472,7 @@ func CoreComponents(
 		oidcauthextension.NewFactory(),
 		healthcheckextension.NewFactory(),
 		pprofextension.NewFactory(),
-		signozhealthcheckextension.NewFactory(),
+		noiraihealthcheckextension.NewFactory(),
 		zpagesextension.NewFactory(),
 		azureauthextension.NewFactory(),
 	)

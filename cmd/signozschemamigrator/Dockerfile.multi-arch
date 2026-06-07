@@ -1,7 +1,7 @@
 ARG DEBIAN_SHA="pass-a-valid-docker-sha-otherwise-this-will-fail"
 
 FROM debian@sha256:${DEBIAN_SHA}
-LABEL maintainer="signoz"
+LABEL maintainer="noirai"
 
 ARG OS="linux"
 ARG ARCH
@@ -13,7 +13,7 @@ RUN apt-get update && \
 
 USER ${USER_UID}
 
-COPY ./target/${OS}-${ARCH}/signoz-schema-migrator /signoz-schema-migrator
+COPY ./target/${OS}-${ARCH}/noirai-schema-migrator /noirai-schema-migrator
 
-ENTRYPOINT [ "/signoz-schema-migrator" ]
+ENTRYPOINT [ "/noirai-schema-migrator" ]
 CMD ["--dsn", "tcp://localhost:9000"]

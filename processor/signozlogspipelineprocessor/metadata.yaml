@@ -1,4 +1,4 @@
-type: signozlogspipeline
+type: noirailogspipeline
 
 status:
   class: processor

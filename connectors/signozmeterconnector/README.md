@@ -1,1 +1,1 @@
-# SigNoz Meter connector
+# NoirAI Meter connector

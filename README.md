@@ -1,1 +1,1 @@
-# SigNoz Otel Collector
+# NoirAI Otel Collector

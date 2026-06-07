@@ -1,12 +1,12 @@
-# Signoz Logs Pipeline Processor
+# NoirAI Logs Pipeline Processor
 
-An otel processor for powering SigNoz logs pipelines.
+An otel processor for powering NoirAI logs pipelines.
 
-The goal of this processor is to achieve a seamless logs pipelines experience for SigNoz users
+The goal of this processor is to achieve a seamless logs pipelines experience for NoirAI users
 while exposing the same interface as the logstransform processor in opentelemetry-collector-contrib
 
 The implementation mostly borrows from, adapts and enhances the official logstransform processor (and stanza)
-code to achieve goals of SigNoz pipelines
+code to achieve goals of NoirAI pipelines
 
 On success, query service should be able to add logs pipelines to otel collector config using
 this processor without having to do much translation or augmentation of the user defined config

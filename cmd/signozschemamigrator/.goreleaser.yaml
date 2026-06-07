@@ -2,16 +2,16 @@
 # vim: set ts=2 sw=2 tw=0 fo=cnqoj
 version: 2
 
-project_name: signoz-schema-migrator
+project_name: noirai-schema-migrator
 
 before:
   hooks:
     - go mod tidy
 
 builds:
-  - id: signoz-schema-migrator
-    binary: bin/signoz-schema-migrator
-    main: cmd/signozschemamigrator/main.go
+  - id: noirai-schema-migrator
+    binary: bin/noirai-schema-migrator
+    main: cmd/noiraischemamigrator/main.go
     goos:
       - linux
       - darwin

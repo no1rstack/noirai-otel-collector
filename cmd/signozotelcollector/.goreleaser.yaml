@@ -2,16 +2,16 @@
 # vim: set ts=2 sw=2 tw=0 fo=cnqoj
 version: 2
 
-project_name: signoz-otel-collector
+project_name: noirai-otel-collector
 
 before:
   hooks:
     - go mod tidy
 
 builds:
-  - id: signoz-otel-collector
-    binary: bin/signoz-otel-collector
-    main: cmd/signozotelcollector/main.go
+  - id: noirai-otel-collector
+    binary: bin/noirai-otel-collector
+    main: cmd/noiraiotelcollector/main.go
     goos:
       - linux
       - darwin

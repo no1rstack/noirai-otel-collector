@@ -1,4 +1,4 @@
-# Signoz Schema Migrator
+# NoirAI Schema Migrator
 
 This is a tool to manage the ClickHouse schema migrations.
 
@@ -37,7 +37,7 @@ Every schema migration using ON CLUSTER creates entries in the `system.distribut
 
 ### Materialization Migrations
 
-When we run materialization migrations on the tables, intra-shard insert would fail because the insert is performed on the old table schema. See more here https://github.com/SigNoz/signoz/issues/4566.
+When we run materialization migrations on the tables, intra-shard insert would fail because the insert is performed on the old table schema. See more here https://github.com/NoirAI/noirai/issues/4566.
 
 
 These challenges necessitated a more mutation-aware migration approach with better detection and handling capabilities for ClickHouse's specific behavior.
@@ -162,29 +162,29 @@ Add `--dev` flag to run the migrator in the development/local mode.
 To run all the up migrations, you can use the following command:
 
 ```bash
-go run cmd/signozschemamigrator/main.go sync --cluster-name="cluster" --dsn="tcp://localhost:9000" --replication=true --up=
+go run cmd/noiraischemamigrator/main.go sync --cluster-name="cluster" --dsn="tcp://localhost:9000" --replication=true --up=
 ```
 
 To run all the up & async migrations, you can use the following command:
 
 ```bash
-go run cmd/signozschemamigrator/main.go async --cluster-name="cluster" --dsn="tcp://localhost:9000" --replication=true --up=
+go run cmd/noiraischemamigrator/main.go async --cluster-name="cluster" --dsn="tcp://localhost:9000" --replication=true --up=
 ```
 
 To run all the down migrations, you can use the following command:
 
 ```bash
-go run cmd/signozschemamigrator/main.go sync --cluster-name="cluster" --dsn="tcp://localhost:9000" --replication=true --down=
+go run cmd/noiraischemamigrator/main.go sync --cluster-name="cluster" --dsn="tcp://localhost:9000" --replication=true --down=
 ```
 
 To run a specific migration, you can use the following command:
 
 ```bash
-go run cmd/signozschemamigrator/main.go sync --cluster-name="cluster" --dsn="tcp://localhost:9000" --replication=true --up=1
+go run cmd/noiraischemamigrator/main.go sync --cluster-name="cluster" --dsn="tcp://localhost:9000" --replication=true --up=1
 ```
 
 To run more than one migration, you can use the following command:
 
 ```bash
-go run cmd/signozschemamigrator/main.go sync --cluster-name="cluster" --dsn="tcp://localhost:9000" --replication=true --up=1,2,3
+go run cmd/noiraischemamigrator/main.go sync --cluster-name="cluster" --dsn="tcp://localhost:9000" --replication=true --up=1,2,3
 ```

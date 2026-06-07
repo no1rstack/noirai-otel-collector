@@ -1,4 +1,4 @@
-type: signozllmpricing
+type: noiraillmpricing
 status:
   class: processor
   stability:
