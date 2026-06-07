@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package signozkafkaexporter
+package noiraikafkaexporter
 
 import (
 	"fmt"
@@ -20,7 +20,7 @@ import (
 	"go.opentelemetry.io/collector/confmap/xconfmap"
 	"go.opentelemetry.io/collector/exporter/exporterhelper"
 
-	"github.com/SigNoz/signoz-otel-collector/exporter/signozkafkaexporter/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/exporter/noiraikafkaexporter/internal/metadata"
 )
 
 func TestLoadConfig(t *testing.T) {

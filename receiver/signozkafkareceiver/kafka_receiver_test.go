@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package signozkafkareceiver
+package noiraikafkareceiver
 
 import (
 	"context"
@@ -27,11 +27,11 @@ import (
 	"go.uber.org/zap/zapcore"
 	"go.uber.org/zap/zaptest/observer"
 
-	"github.com/SigNoz/signoz-otel-collector/internal/coreinternal/testdata"
-	"github.com/SigNoz/signoz-otel-collector/internal/coreinternal/textutils"
-	"github.com/SigNoz/signoz-otel-collector/internal/kafka"
+	"github.com/NoirAI/noirai-otel-collector/internal/coreinternal/testdata"
+	"github.com/NoirAI/noirai-otel-collector/internal/coreinternal/textutils"
+	"github.com/NoirAI/noirai-otel-collector/internal/kafka"
 
-	"github.com/SigNoz/signoz-otel-collector/receiver/signozkafkareceiver/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/receiver/noiraikafkareceiver/internal/metadata"
 )
 
 func TestNewTracesReceiver_version_err(t *testing.T) {

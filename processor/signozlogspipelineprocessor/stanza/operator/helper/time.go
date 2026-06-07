@@ -1,7 +1,7 @@
 // brought in as-is from "github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator/helper
-// with minor changes to use signozstanzaentry.Field instead of entry.Field
+// with minor changes to use noiraistanzaentry.Field instead of entry.Field
 
-package signozstanzahelper
+package noiraistanzahelper
 
 import (
 	"fmt"
@@ -11,7 +11,7 @@ import (
 
 	"go.opentelemetry.io/collector/confmap"
 
-	signozstanzaentry "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/entry"
+	noiraistanzaentry "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/entry"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/entry"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/errors"
 )
@@ -37,7 +37,7 @@ func NewTimeParser() TimeParser {
 
 // TimeParser is a helper that parses time onto an entry.
 type TimeParser struct {
-	ParseFrom  *signozstanzaentry.Field `mapstructure:"parse_from"`
+	ParseFrom  *noiraistanzaentry.Field `mapstructure:"parse_from"`
 	Layout     string                   `mapstructure:"layout"`
 	LayoutType string                   `mapstructure:"layout_type"`
 	Location   string                   `mapstructure:"location"`

@@ -1,10 +1,10 @@
-package signozlogspipelinestanzaadapter
+package noirailogspipelinestanzaadapter
 
 import (
-	signozlogspipelinestanzaoperator "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator"
+	noirailogspipelinestanzaoperator "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator"
 )
 
 type BaseConfig struct {
 	// Using our own version of Config allows using a dedicated registry of stanza ops for logs pipelines.
-	Operators []signozlogspipelinestanzaoperator.Config `mapstructure:"operators"`
+	Operators []noirailogspipelinestanzaoperator.Config `mapstructure:"operators"`
 }

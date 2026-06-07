@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package signozkafkaexporter // import "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/kafkaexporter"
+package noiraikafkaexporter // import "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/kafkaexporter"
 
 import (
 	"context"
@@ -12,7 +12,7 @@ import (
 	"github.com/Shopify/sarama"
 	"go.opentelemetry.io/collector/config/configtls"
 
-	"github.com/SigNoz/signoz-otel-collector/exporter/signozkafkaexporter/internal/awsmsk"
+	"github.com/NoirAI/noirai-otel-collector/exporter/noiraikafkaexporter/internal/awsmsk"
 )
 
 // Authentication defines authentication.

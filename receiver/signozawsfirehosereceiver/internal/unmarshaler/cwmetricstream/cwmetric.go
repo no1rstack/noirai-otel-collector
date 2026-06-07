@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package cwmetricstream // import "github.com/SigNoz/signoz-otel-collector/receiver/signozawsfirehosereceiver/internal/unmarshaler/cwmetricstream"
+package cwmetricstream // import "github.com/NoirAI/noirai-otel-collector/receiver/noiraiawsfirehosereceiver/internal/unmarshaler/cwmetricstream"
 
 // The cWMetric is the format for the CloudWatch metric stream records.
 //

@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package signozawsfirehosereceiver
+package noiraiawsfirehosereceiver
 
 import (
 	"context"
@@ -12,8 +12,8 @@ import (
 	"go.opentelemetry.io/collector/consumer/consumertest"
 	"go.opentelemetry.io/collector/receiver/receivertest"
 
-	"github.com/SigNoz/signoz-otel-collector/receiver/signozawsfirehosereceiver/internal/metadata"
-	"github.com/SigNoz/signoz-otel-collector/receiver/signozawsfirehosereceiver/internal/unmarshaler/otlpmetricstream"
+	"github.com/NoirAI/noirai-otel-collector/receiver/noiraiawsfirehosereceiver/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/receiver/noiraiawsfirehosereceiver/internal/unmarshaler/otlpmetricstream"
 )
 
 func TestValidConfig(t *testing.T) {

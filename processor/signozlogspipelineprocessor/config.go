@@ -1,23 +1,23 @@
 // Brought in as is from logstransform processor in opentelemetry-collector-contrib
-package signozlogspipelineprocessor
+package noirailogspipelineprocessor
 
 import (
 	"errors"
 
-	signozlogspipelinestanzaadapter "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/adapter"
+	noirailogspipelinestanzaadapter "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/adapter"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator"
 	"go.opentelemetry.io/collector/component"
 )
 
 type Config struct {
-	signozlogspipelinestanzaadapter.BaseConfig `mapstructure:",squash"`
+	noirailogspipelinestanzaadapter.BaseConfig `mapstructure:",squash"`
 }
 
 var _ component.Config = (*Config)(nil)
 
 func (cfg *Config) Validate() error {
 	if len(cfg.BaseConfig.Operators) == 0 {
-		return errors.New("no operators were configured for signozlogspipeline processor")
+		return errors.New("no operators were configured for noirailogspipeline processor")
 	}
 	return nil
 }

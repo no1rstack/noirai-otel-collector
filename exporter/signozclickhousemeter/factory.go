@@ -1,10 +1,10 @@
-package signozclickhousemeter
+package noiraiclickhousemeter
 
 import (
 	"context"
 	"errors"
 
-	internalmetadata "github.com/SigNoz/signoz-otel-collector/exporter/signozclickhousemeter/internal/metadata"
+	internalmetadata "github.com/NoirAI/noirai-otel-collector/exporter/noiraiclickhousemeter/internal/metadata"
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/config/configoptional"
 	"go.opentelemetry.io/collector/config/configretry"
@@ -55,7 +55,7 @@ func createDefaultConfig() component.Config {
 		BackOffConfig:    configretry.NewDefaultBackOffConfig(),
 		QueueBatchConfig: configoptional.Some(exporterhelper.NewDefaultQueueConfig()),
 		DSN:              "tcp://localhost:9000",
-		Database:         "signoz_meter",
+		Database:         "noirai_meter",
 		SamplesTable:     "distributed_samples",
 	}
 }

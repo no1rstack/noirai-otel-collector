@@ -6,15 +6,15 @@ import (
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/confmap"
 
-	signozlogspipelinestanzaoperator "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator"
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
+	noirailogspipelinestanzaoperator "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator"
+	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator"
 )
 
 const operatorType = "time_parser"
 
 func init() {
-	signozlogspipelinestanzaoperator.Register(operatorType, func() operator.Builder { return NewConfig() })
+	noirailogspipelinestanzaoperator.Register(operatorType, func() operator.Builder { return NewConfig() })
 }
 
 // NewConfig creates a new time parser config with default values
@@ -25,15 +25,15 @@ func NewConfig() *Config {
 // NewConfigWithID creates a new time parser config with default values
 func NewConfigWithID(operatorID string) *Config {
 	return &Config{
-		TransformerConfig: signozstanzahelper.NewTransformerConfig(operatorID, operatorType),
-		TimeParser:        signozstanzahelper.NewTimeParser(),
+		TransformerConfig: noiraistanzahelper.NewTransformerConfig(operatorID, operatorType),
+		TimeParser:        noiraistanzahelper.NewTimeParser(),
 	}
 }
 
 // Config is the configuration of a time parser operator.
 type Config struct {
-	signozstanzahelper.TransformerConfig `mapstructure:",squash"`
-	signozstanzahelper.TimeParser        `mapstructure:",omitempty,squash"`
+	noiraistanzahelper.TransformerConfig `mapstructure:",squash"`
+	noiraistanzahelper.TimeParser        `mapstructure:",omitempty,squash"`
 }
 
 func (c *Config) Unmarshal(component *confmap.Conf) error {

@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package cwlog // import "github.com/SigNoz/signoz-otel-collector/receiver/signozawsfirehosereceiver/internal/unmarshaler/cwlog"
+package cwlog // import "github.com/NoirAI/noirai-otel-collector/receiver/noiraiawsfirehosereceiver/internal/unmarshaler/cwlog"
 
 type cWLog struct {
 	MessageType         string   `json:"messageType"`

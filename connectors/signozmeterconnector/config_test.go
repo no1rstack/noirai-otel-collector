@@ -1,11 +1,11 @@
-package signozmeterconnector
+package noiraimeterconnector
 
 import (
 	"path/filepath"
 	"testing"
 	"time"
 
-	"github.com/SigNoz/signoz-otel-collector/connectors/signozmeterconnector/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/connectors/noiraimeterconnector/internal/metadata"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"go.opentelemetry.io/collector/component"

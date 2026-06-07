@@ -8,7 +8,7 @@ import (
 
 var (
 	Type      = component.MustNewType("httplogreceiver")
-	ScopeName = "github.com/SigNoz/signoz-otel-collector/receiver/httplogreceiver"
+	ScopeName = "github.com/NoirAI/noirai-otel-collector/receiver/httplogreceiver"
 )
 
 const (

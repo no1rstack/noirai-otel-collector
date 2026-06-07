@@ -5,15 +5,15 @@ package trace
 import (
 	"go.opentelemetry.io/collector/component"
 
-	signozlogspipelinestanzaoperator "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator"
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
+	noirailogspipelinestanzaoperator "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator"
+	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator"
 )
 
 const operatorType = "trace_parser"
 
 func init() {
-	signozlogspipelinestanzaoperator.Register(operatorType, func() operator.Builder { return NewConfig() })
+	noirailogspipelinestanzaoperator.Register(operatorType, func() operator.Builder { return NewConfig() })
 }
 
 // NewConfig creates a new trace parser config with default values
@@ -24,15 +24,15 @@ func NewConfig() *Config {
 // NewConfigWithID creates a new trace parser config with default values
 func NewConfigWithID(operatorID string) *Config {
 	return &Config{
-		TransformerConfig: signozstanzahelper.NewTransformerConfig(operatorID, operatorType),
-		TraceParser:       signozstanzahelper.NewTraceParser(),
+		TransformerConfig: noiraistanzahelper.NewTransformerConfig(operatorID, operatorType),
+		TraceParser:       noiraistanzahelper.NewTraceParser(),
 	}
 }
 
 // Config is the configuration of a trace parser operator.
 type Config struct {
-	signozstanzahelper.TransformerConfig `mapstructure:",squash"`
-	signozstanzahelper.TraceParser       `mapstructure:",omitempty,squash"`
+	noiraistanzahelper.TransformerConfig `mapstructure:",squash"`
+	noiraistanzahelper.TraceParser       `mapstructure:",omitempty,squash"`
 }
 
 // Build will build a trace parser operator.

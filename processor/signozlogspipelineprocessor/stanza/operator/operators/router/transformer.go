@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"slices"
 
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
+	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
 	"github.com/expr-lang/expr/vm"
 	"go.uber.org/multierr"
 	"go.uber.org/zap"
@@ -45,7 +45,7 @@ func (t *Transformer) Process(ctx context.Context, entry *entry.Entry) error {
 	routesHaveBodyFieldRef := slices.ContainsFunc(
 		t.routes, func(r *Route) bool { return r.exprHasBodyFieldRef },
 	)
-	return signozstanzahelper.RunWithExprEnv(entry, routesHaveBodyFieldRef, t.allCompiledPatterns, func(env map[string]any) error {
+	return noiraistanzahelper.RunWithExprEnv(entry, routesHaveBodyFieldRef, t.allCompiledPatterns, func(env map[string]any) error {
 		for _, route := range t.routes {
 			matches, err := vm.Run(route.Expression, env)
 			if err != nil {

@@ -8,8 +8,8 @@ import (
 
 	"go.opentelemetry.io/collector/component"
 
-	signozlogspipelinestanzaoperator "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator"
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
+	noirailogspipelinestanzaoperator "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator"
+	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/entry"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator"
 )
@@ -17,7 +17,7 @@ import (
 const operatorType = "add"
 
 func init() {
-	signozlogspipelinestanzaoperator.Register(operatorType, func() operator.Builder { return NewConfig() })
+	noirailogspipelinestanzaoperator.Register(operatorType, func() operator.Builder { return NewConfig() })
 }
 
 // NewConfig creates a new add operator config with default values
@@ -28,13 +28,13 @@ func NewConfig() *Config {
 // NewConfigWithID creates a new add operator config with default values
 func NewConfigWithID(operatorID string) *Config {
 	return &Config{
-		TransformerConfig: signozstanzahelper.NewTransformerConfig(operatorID, operatorType),
+		TransformerConfig: noiraistanzahelper.NewTransformerConfig(operatorID, operatorType),
 	}
 }
 
 // Config is the configuration of an add operator
 type Config struct {
-	signozstanzahelper.TransformerConfig `mapstructure:",squash"`
+	noiraistanzahelper.TransformerConfig `mapstructure:",squash"`
 	Field                                entry.Field `mapstructure:"field"`
 	Value                                any         `mapstructure:"value,omitempty"`
 }
@@ -60,7 +60,7 @@ func (c Config) Build(set component.TelemetrySettings) (operator.Operator, error
 
 	// ADD expression string would not contain LIKE function; We only support official EXPR functions
 	// in add operator
-	compiled, hasBodyFieldRef, _, err := signozstanzahelper.ExprCompile(exprStr)
+	compiled, hasBodyFieldRef, _, err := noiraistanzahelper.ExprCompile(exprStr)
 	if err != nil {
 		return nil, fmt.Errorf("failed to compile expression '%s': %w", c.IfExpr, err)
 	}

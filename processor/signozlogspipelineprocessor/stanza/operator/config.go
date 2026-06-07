@@ -2,7 +2,7 @@
 // Maintaining our own copy/version of Config allows us to use our own
 // registry of stanza operators used in Config.Unmarshal in this file
 
-package signozlogspipelinestanzaoperator
+package noirailogspipelinestanzaoperator
 
 import (
 	"fmt"
@@ -33,7 +33,7 @@ func (c *Config) Unmarshal(component *confmap.Conf) error {
 		return fmt.Errorf("non-string type %T for field 'type'", typeInterface)
 	}
 
-	builderFunc, ok := SignozStanzaOperatorsRegistry.Lookup(typeString)
+	builderFunc, ok := NoirAIStanzaOperatorsRegistry.Lookup(typeString)
 	if !ok {
 		return fmt.Errorf("unsupported type '%s'", typeString)
 	}

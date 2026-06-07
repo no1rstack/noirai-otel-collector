@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package signozkafkaexporter // import "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/kafkaexporter"
+package noiraikafkaexporter // import "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/kafkaexporter"
 
 import (
 	"context"
@@ -138,7 +138,7 @@ func (e *kafkaLogsProducer) normalizeLogData(ld *plog.Logs) {
 			for lrIdx := 0; lrIdx < sl.LogRecords().Len(); lrIdx++ {
 				lr := sl.LogRecords().At(lrIdx)
 
-				// log body is always expected to be string in SigNoz
+				// log body is always expected to be string in NoirAI
 				if lr.Body().Type() != pcommon.ValueTypeStr {
 					var strBody string
 					if lr.Body().Type() == pcommon.ValueTypeBytes {

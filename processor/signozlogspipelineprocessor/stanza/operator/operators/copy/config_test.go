@@ -5,8 +5,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	signozstanzaentry "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/entry"
-	"github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/operatortest"
+	noiraistanzaentry "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/entry"
+	"github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/operatortest"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/entry"
 )
 
@@ -20,7 +20,7 @@ func TestUnmarshal(t *testing.T) {
 				Name: "body_to_body",
 				Expect: func() *Config {
 					cfg := NewConfig()
-					cfg.From = signozstanzaentry.Field{FieldInterface: signozstanzaentry.NewBodyField("key")}
+					cfg.From = noiraistanzaentry.Field{FieldInterface: noiraistanzaentry.NewBodyField("key")}
 					cfg.To = entry.NewBodyField("key2")
 					return cfg
 				}(),
@@ -29,7 +29,7 @@ func TestUnmarshal(t *testing.T) {
 				Name: "body_to_attribute",
 				Expect: func() *Config {
 					cfg := NewConfig()
-					cfg.From = signozstanzaentry.Field{FieldInterface: signozstanzaentry.NewBodyField("key")}
+					cfg.From = noiraistanzaentry.Field{FieldInterface: noiraistanzaentry.NewBodyField("key")}
 					cfg.To = entry.NewAttributeField("key2")
 					return cfg
 				}(),
@@ -38,7 +38,7 @@ func TestUnmarshal(t *testing.T) {
 				Name: "attribute_to_resource",
 				Expect: func() *Config {
 					cfg := NewConfig()
-					cfg.From = signozstanzaentry.Field{FieldInterface: entry.NewAttributeField("key")}
+					cfg.From = noiraistanzaentry.Field{FieldInterface: entry.NewAttributeField("key")}
 					cfg.To = entry.NewResourceField("key2")
 					return cfg
 				}(),
@@ -47,7 +47,7 @@ func TestUnmarshal(t *testing.T) {
 				Name: "attribute_to_body",
 				Expect: func() *Config {
 					cfg := NewConfig()
-					cfg.From = signozstanzaentry.Field{FieldInterface: entry.NewAttributeField("key")}
+					cfg.From = noiraistanzaentry.Field{FieldInterface: entry.NewAttributeField("key")}
 					cfg.To = entry.NewBodyField("key2")
 					return cfg
 				}(),
@@ -56,7 +56,7 @@ func TestUnmarshal(t *testing.T) {
 				Name: "attribute_to_nested_attribute",
 				Expect: func() *Config {
 					cfg := NewConfig()
-					cfg.From = signozstanzaentry.Field{FieldInterface: entry.NewAttributeField("key")}
+					cfg.From = noiraistanzaentry.Field{FieldInterface: entry.NewAttributeField("key")}
 					cfg.To = entry.NewAttributeField("one", "two", "three")
 					return cfg
 				}(),
@@ -65,7 +65,7 @@ func TestUnmarshal(t *testing.T) {
 				Name: "resource_to_nested_resource",
 				Expect: func() *Config {
 					cfg := NewConfig()
-					cfg.From = signozstanzaentry.Field{FieldInterface: entry.NewResourceField("key")}
+					cfg.From = noiraistanzaentry.Field{FieldInterface: entry.NewResourceField("key")}
 					cfg.To = entry.NewResourceField("one", "two", "three")
 					return cfg
 				}(),

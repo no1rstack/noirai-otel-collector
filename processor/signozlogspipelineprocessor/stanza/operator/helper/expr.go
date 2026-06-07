@@ -1,8 +1,8 @@
 // Mostly brought in as-is from otel-collector-contrib with the following changes:
 // - GetExprEnv includes severity_text and severity_number
-// - signozExprPatcher rewrites like/ilike AST nodes for compile-time pattern compilation
+// - noiraiExprPatcher rewrites like/ilike AST nodes for compile-time pattern compilation
 
-package signozstanzahelper
+package noiraistanzahelper
 
 import (
 	"errors"
@@ -10,8 +10,8 @@ import (
 	"os"
 	"sync"
 
-	signozstanzaentry "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/entry"
-	"github.com/SigNoz/signoz-otel-collector/utils"
+	noiraistanzaentry "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/entry"
+	"github.com/NoirAI/noirai-otel-collector/utils"
 	"github.com/expr-lang/expr"
 	"github.com/expr-lang/expr/ast"
 	"github.com/expr-lang/expr/vm"
@@ -56,7 +56,7 @@ func getExprEnv(e *entry.Entry, forExprWithBodyFieldRef bool, compiledPatterns m
 	env["trace_flags"] = e.TraceFlags
 
 	if forExprWithBodyFieldRef {
-		env["body_map"] = signozstanzaentry.ParseBodyJson(e)
+		env["body_map"] = noiraistanzaentry.ParseBodyJson(e)
 	}
 
 	for k, v := range compiledPatterns {
@@ -79,7 +79,7 @@ func putExprEnv(e map[string]any, compiledPatterns map[string]func(s string) boo
 func ExprCompile(input string) (
 	program *vm.Program, hasBodyFieldRef bool, compiledPatterns map[string]func(s string) bool, err error,
 ) {
-	patcher := &signozExprPatcher{compiledPatterns: make(map[string]func(s string) bool)}
+	patcher := &noiraiExprPatcher{compiledPatterns: make(map[string]func(s string) bool)}
 	program, err = expr.Compile(
 		input, expr.AllowUndefinedVariables(), expr.Patch(patcher),
 	)
@@ -95,7 +95,7 @@ func ExprCompile(input string) (
 func ExprCompileBool(input string) (
 	program *vm.Program, hasBodyFieldRef bool, compiledPatterns map[string]func(s string) bool, err error,
 ) {
-	patcher := &signozExprPatcher{compiledPatterns: make(map[string]func(s string) bool)}
+	patcher := &noiraiExprPatcher{compiledPatterns: make(map[string]func(s string) bool)}
 	program, err = expr.Compile(
 		input, expr.AllowUndefinedVariables(), expr.Patch(patcher), expr.AsBool(),
 	)
@@ -106,7 +106,7 @@ func ExprCompileBool(input string) (
 	return program, patcher.foundBodyFieldRef, patcher.compiledPatterns, patcher.error()
 }
 
-// signozExprPatcher is an expr AST visitor that runs once during expression
+// noiraiExprPatcher is an expr AST visitor that runs once during expression
 // compilation (i.e. at pipeline startup, not per log entry). It performs two
 // independent rewrites on the AST:
 //
@@ -116,7 +116,7 @@ func ExprCompileBool(input string) (
 // Both rewrites mutate the AST nodes in place. The expr library calls Visit
 // on every node in a bottom-up traversal, so by the time expr.Compile returns,
 // the compiled *vm.Program already contains the rewritten bytecode.
-type signozExprPatcher struct {
+type noiraiExprPatcher struct {
 	// foundBodyFieldRef is set to true when the patcher sees a reference to a
 	// field inside body (e.g. body.request.id). Callers use this flag to
 	// decide whether to JSON-parse the log body into body_map at runtime.
@@ -140,7 +140,7 @@ type signozExprPatcher struct {
 }
 
 // firstErr returns the first accumulated patcher error, or nil.
-func (p *signozExprPatcher) error() error {
+func (p *noiraiExprPatcher) error() error {
 	if len(p.errs) == 0 {
 		return nil
 	}
@@ -148,8 +148,8 @@ func (p *signozExprPatcher) error() error {
 }
 
 // Visit implements ast.Visitor. It is called once per AST node during
-// expr.Compile and applies the two rewrites described on signozExprPatcher.
-func (p *signozExprPatcher) Visit(node *ast.Node) {
+// expr.Compile and applies the two rewrites described on noiraiExprPatcher.
+func (p *noiraiExprPatcher) Visit(node *ast.Node) {
 	// ── Rewrite 1: body field redirection ────────────────────────────────────
 	//
 	// expr represents `body.request.id` as:
@@ -207,7 +207,7 @@ func (p *signozExprPatcher) Visit(node *ast.Node) {
 //	             inject it into the env before vm.Run.
 //	4 — rewrite: mutate the CallNode to call __like_3f8a1c2d(body) instead of
 //	             like(body, "%error%"), dropping the now-baked-in pattern arg.
-func (p *signozExprPatcher) rewriteLikeCall(n *ast.CallNode, c *ast.IdentifierNode) {
+func (p *noiraiExprPatcher) rewriteLikeCall(n *ast.CallNode, c *ast.IdentifierNode) {
 	// ── Arity check ───────────────────────────────────────────────────────
 	if len(n.Arguments) != 2 {
 		p.errs = append(p.errs, fmt.Errorf(

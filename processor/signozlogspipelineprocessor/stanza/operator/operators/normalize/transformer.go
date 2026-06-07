@@ -6,9 +6,9 @@ import (
 	"reflect"
 	"strings"
 
-	signozstanzaentry "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/entry"
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
-	"github.com/SigNoz/signoz-otel-collector/utils"
+	noiraistanzaentry "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/entry"
+	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
+	"github.com/NoirAI/noirai-otel-collector/utils"
 	"github.com/bytedance/sonic"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/entry"
 	"go.opentelemetry.io/otel/metric"
@@ -22,7 +22,7 @@ const (
 var msgCompatibleFields = []string{"log", "msg"}
 
 type Processor struct {
-	signozstanzahelper.TransformerOperator
+	noiraistanzahelper.TransformerOperator
 	sonic.Config
 	logsProcessed metric.Int64Counter
 }
@@ -47,7 +47,7 @@ func (p *Processor) transform(entry *entry.Entry) error {
 	switch v := entry.Body.(type) {
 	case string:
 		parsedValue = p.processTextLogs(v)
-	// no need to cover other map types; check comment https://github.com/SigNoz/signoz-otel-collector/pull/584#discussion_r2042020882
+	// no need to cover other map types; check comment https://github.com/NoirAI/noirai-otel-collector/pull/584#discussion_r2042020882
 	case map[string]any:
 		parsedValue = v
 	default:
@@ -79,7 +79,7 @@ func (p *Processor) processTextLogs(str string) map[string]any {
 
 // getMessage returns the "message" field value, treating nil as missing and
 // removing the nil entry so downstream steps see a clean state.
-func getMessage(e *entry.Entry, field signozstanzaentry.Field) (any, bool) {
+func getMessage(e *entry.Entry, field noiraistanzaentry.Field) (any, bool) {
 	val, exists := e.Get(field)
 	if !exists {
 		return nil, false
@@ -103,12 +103,12 @@ func getMessage(e *entry.Entry, field signozstanzaentry.Field) (any, bool) {
 // Note: Stringification `message` is delegated to ClickHouse to do natively with Type Hinting and
 // MetadataExporter skips diving into message Slices, Maps and records strictly as String always
 func (p *Processor) normalize(entry *entry.Entry) {
-	message := signozstanzaentry.NewBodyField("message")
+	message := noiraistanzaentry.NewBodyField("message")
 
 	if _, exists := getMessage(entry, message); !exists {
 		// add first found msg compatible field to body
 		for _, fieldName := range msgCompatibleFields {
-			field := signozstanzaentry.NewBodyField(fieldName)
+			field := noiraistanzaentry.NewBodyField(fieldName)
 			val, ok := entry.Get(field)
 			if !ok {
 				continue
@@ -132,7 +132,7 @@ func (p *Processor) normalize(entry *entry.Entry) {
 				// delete "message" first, then shift all inner keys to top level
 				entry.Delete(message)
 				for key, value := range mapValue {
-					entry.Set(signozstanzaentry.NewBodyField(key), value)
+					entry.Set(noiraistanzaentry.NewBodyField(key), value)
 				}
 			}
 		}

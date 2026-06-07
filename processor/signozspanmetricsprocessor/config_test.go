@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package signozspanmetricsprocessor
+package noiraispanmetricsprocessor
 
 import (
 	"path/filepath"
@@ -31,7 +31,7 @@ import (
 	"github.com/open-telemetry/opentelemetry-collector-contrib/exporter/prometheusexporter"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/receiver/jaegerreceiver"
 
-	"github.com/SigNoz/signoz-otel-collector/processor/signozspanmetricsprocessor/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraispanmetricsprocessor/internal/metadata"
 )
 
 func TestLoadConfig(t *testing.T) {

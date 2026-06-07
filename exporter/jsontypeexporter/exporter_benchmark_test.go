@@ -8,8 +8,8 @@ import (
 	"go.opentelemetry.io/collector/pdata/plog"
 	"go.uber.org/zap"
 
-	"github.com/SigNoz/signoz-otel-collector/pkg/pdatagen/plogsgen"
-	"github.com/SigNoz/signoz-otel-collector/utils"
+	"github.com/NoirAI/noirai-otel-collector/pkg/pdatagen/plogsgen"
+	"github.com/NoirAI/noirai-otel-collector/utils"
 	lru "github.com/hashicorp/golang-lru/v2"
 	mockhouse "github.com/srikanthccv/ClickHouse-go-mock"
 )
@@ -47,10 +47,10 @@ func BenchmarkPushLogs_10k(b *testing.B) {
 
 	// Construct exporter with key cache
 	exp := &jsonTypeExporter{
-		config:   &Config{},
-		logger:   zap.NewNop(),
-		limiter:  make(chan struct{}, utils.Concurrency()),
-		conn:     conn,
+		config:           &Config{},
+		logger:           zap.NewNop(),
+		limiter:          make(chan struct{}, utils.Concurrency()),
+		conn:             conn,
 		cardinalKeyCache: keyCache,
 	}
 	b.ReportAllocs()

@@ -7,8 +7,8 @@ import (
 )
 
 var (
-	Type      = component.MustNewType("signozkafkareceiver")
-	ScopeName = "github.com/SigNoz/signoz-otel-collector/receiver/signozkafkareceiver"
+	Type      = component.MustNewType("noiraikafkareceiver")
+	ScopeName = "github.com/NoirAI/noirai-otel-collector/receiver/noiraikafkareceiver"
 )
 
 const (

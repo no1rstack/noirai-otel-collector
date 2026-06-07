@@ -8,7 +8,7 @@
 // Trade-off: ConsumeLogs returns immediately after enqueuing the batch.
 // Backpressure to the OTel batchprocessor and error propagation from the next
 // consumer are NOT preserved.
-package signozlogspipelineprocessor
+package noirailogspipelineprocessor
 
 import (
 	"context"
@@ -31,8 +31,8 @@ import (
 	"go.opentelemetry.io/otel/metric"
 	"go.uber.org/zap"
 
-	_ "github.com/SigNoz/signoz-otel-collector/pkg/parser/grok" // ensure grok parser gets registered.
-	"github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/internal/metadata"
+	_ "github.com/NoirAI/noirai-otel-collector/pkg/parser/grok" // ensure grok parser gets registered.
+	"github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/internal/metadata"
 )
 
 type logsPipelineProcessor struct {
@@ -196,8 +196,8 @@ func (p *logsPipelineProcessor) converterLoop(ctx context.Context, wg *sync.Wait
 //
 // We deliberately use the local convertEntriesToPlogs (utils.go) instead of
 // adapter.ConvertEntries because the local version filters out attributes
-// prefixed with signozstanzaentry.InternalTempAttributePrefix, which the
-// SigNoz operator suite uses for scratch state. Those keys must not be
+// prefixed with noiraistanzaentry.InternalTempAttributePrefix, which the
+// NoirAI operator suite uses for scratch state. Those keys must not be
 // emitted to the next consumer.
 func (p *logsPipelineProcessor) consumeStanzaLogEntries(ctx context.Context, entries []*entry.Entry) {
 	pLogs := convertEntriesToPlogs(entries)

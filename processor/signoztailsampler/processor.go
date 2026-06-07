@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package signoztailsampler // import "github.com/open-telemetry/opentelemetry-collector-contrib/processor/tailsamplingprocessor"
+package noiraitailsampler // import "github.com/open-telemetry/opentelemetry-collector-contrib/processor/tailsamplingprocessor"
 
 import (
 	"context"
@@ -32,9 +32,9 @@ import (
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
 
-	"github.com/SigNoz/signoz-otel-collector/processor/signoztailsampler/internal/idbatcher"
-	"github.com/SigNoz/signoz-otel-collector/processor/signoztailsampler/internal/sampling"
-	"github.com/SigNoz/signoz-otel-collector/processor/signoztailsampler/internal/timeutils"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraitailsampler/internal/idbatcher"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraitailsampler/internal/sampling"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraitailsampler/internal/timeutils"
 )
 
 // policy combines a sampling policy evaluator with the destinations to be
@@ -65,7 +65,7 @@ type tailSamplingSpanProcessor struct {
 }
 
 const (
-	sourceFormat = "signoz_tail_sampling"
+	sourceFormat = "noirai_tail_sampling"
 )
 
 // newTracesProcessor returns a processor.TracesProcessor that will perform tail sampling according to the given

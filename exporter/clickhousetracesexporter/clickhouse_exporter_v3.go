@@ -12,12 +12,12 @@ import (
 
 	"github.com/goccy/go-json"
 
-	tracesschema "github.com/SigNoz/signoz-otel-collector/pkg/schema/traces"
-	"github.com/SigNoz/signoz-otel-collector/pkg/metering"
-	"github.com/SigNoz/signoz-otel-collector/usage"
-	"github.com/SigNoz/signoz-otel-collector/utils"
-	"github.com/SigNoz/signoz-otel-collector/utils/fingerprint"
-	"github.com/SigNoz/signoz-otel-collector/utils/flatten"
+	"github.com/NoirAI/noirai-otel-collector/pkg/metering"
+	tracesschema "github.com/NoirAI/noirai-otel-collector/pkg/schema/traces"
+	"github.com/NoirAI/noirai-otel-collector/usage"
+	"github.com/NoirAI/noirai-otel-collector/utils"
+	"github.com/NoirAI/noirai-otel-collector/utils/fingerprint"
+	"github.com/NoirAI/noirai-otel-collector/utils/flatten"
 	"github.com/google/uuid"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
@@ -268,7 +268,7 @@ func newStructuredSpanV3(bucketStart uint64, fingerprint string, otelSpan ptrace
 	})
 
 	resource.Attributes().Range(func(k string, v pcommon.Value) bool {
-		isBillable := !metering.ExcludeSigNozWorkspaceResourceAttrs.MatchString(k)
+		isBillable := !metering.ExcludeNoirAIWorkspaceResourceAttrs.MatchString(k)
 		if v.Type() == pcommon.ValueTypeMap {
 			result := flatten.FlattenJSON(v.Map().AsRaw(), k)
 			for tempKey, tempVal := range result {

@@ -1,3 +1,3 @@
 //go:generate mdatagen metadata.yaml
 
-package signozlogspipelineprocessor // import "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor"
+package noirailogspipelineprocessor // import "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor"

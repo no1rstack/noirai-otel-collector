@@ -7,14 +7,14 @@ import (
 	"fmt"
 	"regexp"
 
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
+	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/entry"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator/helper"
 )
 
 // Parser is an operator that parses regex in an entry.
 type Parser struct {
-	signozstanzahelper.ParserOperator
+	noiraistanzahelper.ParserOperator
 	regexp *regexp.Regexp
 	cache  cache
 }

@@ -1,12 +1,12 @@
 // brought in as is from "github.com/open-telemetry/opentelemetry-collector-contrib/internal/coreinternal/timeutils"
-package signozstanzahelper
+package noiraistanzahelper
 
 import (
 	"fmt"
 	"strings"
 	"time"
 
-	strptime "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper/ctimefmt"
+	strptime "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper/ctimefmt"
 )
 
 func StrptimeToGotime(layout string) (string, error) {

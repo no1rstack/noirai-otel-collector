@@ -1,18 +1,18 @@
-// Stanza operators registry dedicated to Signoz logs pipelines
+// Stanza operators registry dedicated to NoirAI logs pipelines
 
-package signozlogspipelinestanzaoperator
+package noirailogspipelinestanzaoperator
 
 import "github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator"
 
-var SignozStanzaOperatorsRegistry = operator.NewRegistry()
+var NoirAIStanzaOperatorsRegistry = operator.NewRegistry()
 
 // Register will register an operator in the default registry
 func Register(operatorType string, newBuilder func() operator.Builder) {
-	SignozStanzaOperatorsRegistry.Register(operatorType, newBuilder)
+	NoirAIStanzaOperatorsRegistry.Register(operatorType, newBuilder)
 }
 
 // Lookup looks up a given operator type.Its second return value will
 // be false if no builder is registered for that type.
 func Lookup(configType string) (func() operator.Builder, bool) {
-	return SignozStanzaOperatorsRegistry.Lookup(configType)
+	return NoirAIStanzaOperatorsRegistry.Lookup(configType)
 }

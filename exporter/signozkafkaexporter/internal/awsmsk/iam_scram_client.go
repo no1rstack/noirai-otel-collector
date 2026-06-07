@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package awsmsk // import "github.com/SigNoz/signoz-otel-collector/exporter/signozkafkaexporter/internal/awsmsk"
+package awsmsk // import "github.com/NoirAI/noirai-otel-collector/exporter/noiraikafkaexporter/internal/awsmsk"
 
 import (
 	"errors"

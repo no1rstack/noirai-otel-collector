@@ -7,7 +7,7 @@ import (
 	"encoding/hex"
 	"testing"
 
-	signozstanzaentry "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/entry"
+	noiraistanzaentry "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/entry"
 	"github.com/stretchr/testify/require"
 	"go.opentelemetry.io/collector/component/componenttest"
 
@@ -46,7 +46,7 @@ func TestBuild(t *testing.T) {
 		{
 			"spanid",
 			func() (*Config, error) {
-				parseFrom := signozstanzaentry.Field{FieldInterface: signozstanzaentry.NewBodyField("app_span_id")}
+				parseFrom := noiraistanzaentry.Field{FieldInterface: noiraistanzaentry.NewBodyField("app_span_id")}
 				cfg := NewConfigWithID("test_id")
 				cfg.SpanID.ParseFrom = &parseFrom
 				return cfg, nil
@@ -56,7 +56,7 @@ func TestBuild(t *testing.T) {
 		{
 			"traceid",
 			func() (*Config, error) {
-				parseFrom := signozstanzaentry.Field{FieldInterface: signozstanzaentry.NewBodyField("app_trace_id")}
+				parseFrom := noiraistanzaentry.Field{FieldInterface: noiraistanzaentry.NewBodyField("app_trace_id")}
 				cfg := NewConfigWithID("test_id")
 				cfg.TraceID.ParseFrom = &parseFrom
 				return cfg, nil
@@ -66,7 +66,7 @@ func TestBuild(t *testing.T) {
 		{
 			"trace-flags",
 			func() (*Config, error) {
-				parseFrom := signozstanzaentry.Field{FieldInterface: signozstanzaentry.NewBodyField("trace-flags-field")}
+				parseFrom := noiraistanzaentry.Field{FieldInterface: noiraistanzaentry.NewBodyField("trace-flags-field")}
 				cfg := NewConfigWithID("test_id")
 				cfg.TraceFlags.ParseFrom = &parseFrom
 				return cfg, nil
@@ -120,9 +120,9 @@ func TestProcess(t *testing.T) {
 			"all",
 			func() (operator.Operator, error) {
 				cfg := NewConfigWithID("test_id")
-				spanFrom := signozstanzaentry.Field{FieldInterface: signozstanzaentry.NewBodyField("app_span_id")}
-				traceFrom := signozstanzaentry.Field{FieldInterface: signozstanzaentry.NewBodyField("app_trace_id")}
-				flagsFrom := signozstanzaentry.Field{FieldInterface: signozstanzaentry.NewBodyField("trace_flags_field")}
+				spanFrom := noiraistanzaentry.Field{FieldInterface: noiraistanzaentry.NewBodyField("app_span_id")}
+				traceFrom := noiraistanzaentry.Field{FieldInterface: noiraistanzaentry.NewBodyField("app_trace_id")}
+				flagsFrom := noiraistanzaentry.Field{FieldInterface: noiraistanzaentry.NewBodyField("trace_flags_field")}
 				cfg.SpanID.ParseFrom = &spanFrom
 				cfg.TraceID.ParseFrom = &traceFrom
 				cfg.TraceFlags.ParseFrom = &flagsFrom

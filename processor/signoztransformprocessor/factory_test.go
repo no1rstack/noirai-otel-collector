@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package signoztransformprocessor
+package noiraitransformprocessor
 
 import (
 	"context"
@@ -18,8 +18,8 @@ import (
 	"go.opentelemetry.io/collector/pdata/ptrace"
 	"go.opentelemetry.io/collector/processor/processortest"
 
-	"github.com/SigNoz/signoz-otel-collector/processor/signoztransformprocessor/internal/common"
-	"github.com/SigNoz/signoz-otel-collector/processor/signoztransformprocessor/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraitransformprocessor/internal/common"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraitransformprocessor/internal/metadata"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/ottl"
 )
 

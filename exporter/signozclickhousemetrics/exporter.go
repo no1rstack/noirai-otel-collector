@@ -1,4 +1,4 @@
-package signozclickhousemetrics
+package noiraiclickhousemetrics
 
 import (
 	"context"
@@ -10,8 +10,8 @@ import (
 	"sync"
 	"time"
 
-	internalmetadata "github.com/SigNoz/signoz-otel-collector/exporter/signozclickhousemetrics/internal/metadata"
-	"github.com/SigNoz/signoz-otel-collector/usage"
+	internalmetadata "github.com/NoirAI/noirai-otel-collector/exporter/noiraiclickhousemetrics/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/usage"
 	"github.com/google/uuid"
 	"go.opencensus.io/stats"
 	"go.opencensus.io/stats/view"
@@ -31,7 +31,7 @@ import (
 	"go.opentelemetry.io/otel/metric/noop"
 	"go.uber.org/zap"
 
-	pkgfingerprint "github.com/SigNoz/signoz-otel-collector/internal/common/fingerprint"
+	pkgfingerprint "github.com/NoirAI/noirai-otel-collector/internal/common/fingerprint"
 )
 
 var (
@@ -1118,7 +1118,7 @@ func (c *clickhouseMetricsExporter) writeBatch(ctx context.Context, batch *batch
 				return err
 			}
 			collectUsage := true
-			if strings.HasPrefix(sample.metricName, "signoz") || strings.HasPrefix(sample.metricName, "chi") || strings.HasPrefix(sample.metricName, "otelcol") {
+			if strings.HasPrefix(sample.metricName, "noirai") || strings.HasPrefix(sample.metricName, "chi") || strings.HasPrefix(sample.metricName, "otelcol") {
 				collectUsage = false
 			}
 
@@ -1127,7 +1127,7 @@ func (c *clickhouseMetricsExporter) writeBatch(ctx context.Context, batch *batch
 			}
 		}
 		for k, v := range metrics {
-			err = stats.RecordWithTags(ctx, []tag.Mutator{tag.Upsert(usage.TagTenantKey, k), tag.Upsert(usage.TagExporterIdKey, c.exporterID.String())}, ExporterSigNozSentMetricPoints.M(int64(v.Count)), ExporterSigNozSentMetricPointsBytes.M(int64(v.Size)))
+			err = stats.RecordWithTags(ctx, []tag.Mutator{tag.Upsert(usage.TagTenantKey, k), tag.Upsert(usage.TagExporterIdKey, c.exporterID.String())}, ExporterNoirAISentMetricPoints.M(int64(v.Count)), ExporterNoirAISentMetricPointsBytes.M(int64(v.Size)))
 			if err != nil {
 				c.logger.Error("error recording usage metric", zap.Error(err))
 			}

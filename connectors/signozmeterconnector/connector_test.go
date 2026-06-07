@@ -1,14 +1,14 @@
-package signozmeterconnector
+package noiraimeterconnector
 
 import (
 	"context"
 	"testing"
 	"time"
 
-	"github.com/SigNoz/signoz-otel-collector/connectors/signozmeterconnector/internal/metadata"
-	"github.com/SigNoz/signoz-otel-collector/pkg/pdatagen/plogsgen"
-	"github.com/SigNoz/signoz-otel-collector/pkg/pdatagen/pmetricsgen"
-	"github.com/SigNoz/signoz-otel-collector/pkg/pdatagen/ptracesgen"
+	"github.com/NoirAI/noirai-otel-collector/connectors/noiraimeterconnector/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/pkg/pdatagen/plogsgen"
+	"github.com/NoirAI/noirai-otel-collector/pkg/pdatagen/pmetricsgen"
+	"github.com/NoirAI/noirai-otel-collector/pkg/pdatagen/ptracesgen"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/pdatautil"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

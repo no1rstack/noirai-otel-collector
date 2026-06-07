@@ -5,14 +5,14 @@ package time
 import (
 	"context"
 
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
+	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/entry"
 )
 
 // Parser is an operator that parses time from a field to an entry.
 type Parser struct {
-	signozstanzahelper.TransformerOperator
-	signozstanzahelper.TimeParser
+	noiraistanzahelper.TransformerOperator
+	noiraistanzahelper.TimeParser
 }
 
 // Process will parse time from an entry.

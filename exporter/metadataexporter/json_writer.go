@@ -23,7 +23,7 @@ import (
 
 const (
 	distributedFieldKeysTable  = constants.SignozMetadataDB + "." + constants.DistributedFieldKeysTable
-	distributedTagAttrsV2Table = "signoz_logs.distributed_tag_attributes_v2"
+	distributedTagAttrsV2Table = "noirai_logs.distributed_tag_attributes_v2"
 
 	jsonArraySuffix  = "[]"
 	jsonMessageField = "message"
@@ -138,8 +138,8 @@ func appendTypeSet(ta *typesAccumulator, signal, context string, stmt driver.Bat
 // feeding both type collection and value suggestions from one traversal.
 //
 // It writes to two tables per flush:
-//   - signoz_metadata.distributed_json_path_types  (path → ClickHouse type)
-//   - signoz_logs.distributed_tag_attributes_v2    (path → value, tag_type=source)
+//   - noirai_metadata.distributed_json_path_types  (path → ClickHouse type)
+//   - noirai_logs.distributed_tag_attributes_v2    (path → value, tag_type=source)
 type jsonMetadataWriter struct {
 	cfg              JSONConfig
 	logger           *zap.Logger
@@ -168,7 +168,7 @@ func newJSONMetadataWriter(
 		return nil, fmt.Errorf("failed to create cardinal key cache: %w", err)
 	}
 	logsProcessed, err := e.set.MeterProvider.Meter("github.com/SigNoz/signoz-otel-collector/exporter/metadataexporter").Int64Counter(
-		"signoz_metadata_exporter_json_logs_processed",
+		"noirai_metadata_exporter_json_logs_processed",
 		metric.WithDescription("Number of log records with a JSON (map) body processed by the JSON metadata writer"),
 	)
 	if err != nil {

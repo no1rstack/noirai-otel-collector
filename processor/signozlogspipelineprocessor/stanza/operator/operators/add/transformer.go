@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"strings"
 
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
+	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
 	"github.com/expr-lang/expr/vm"
 
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/entry"
@@ -15,7 +15,7 @@ import (
 
 // Transformer is an operator that adds a string value or an expression value
 type Transformer struct {
-	signozstanzahelper.TransformerOperator
+	noiraistanzahelper.TransformerOperator
 
 	Field                    entry.Field
 	Value                    any
@@ -38,7 +38,7 @@ func (t *Transformer) Transform(e *entry.Entry) error {
 		return e.Set(t.Field, t.Value)
 	}
 	if t.program != nil {
-		return signozstanzahelper.RunWithExprEnv(e, t.valueExprHasBodyFieldRef, nil, func(env map[string]any) error {
+		return noiraistanzahelper.RunWithExprEnv(e, t.valueExprHasBodyFieldRef, nil, func(env map[string]any) error {
 			result, err := vm.Run(t.program, env)
 			if err != nil {
 				return fmt.Errorf("evaluate value_expr: %w", err)

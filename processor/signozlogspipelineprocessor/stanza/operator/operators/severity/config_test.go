@@ -5,8 +5,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	signozstanzaentry "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/entry"
-	"github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/operatortest"
+	noiraistanzaentry "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/entry"
+	"github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/operatortest"
 )
 
 func TestUnmarshal(t *testing.T) {
@@ -30,7 +30,7 @@ func TestUnmarshal(t *testing.T) {
 				Name: "parse_from_simple",
 				Expect: func() *Config {
 					cfg := NewConfig()
-					from := signozstanzaentry.Field{FieldInterface: signozstanzaentry.NewBodyField("from")}
+					from := noiraistanzaentry.Field{FieldInterface: noiraistanzaentry.NewBodyField("from")}
 					cfg.ParseFrom = &from
 					return cfg
 				}(),
@@ -39,7 +39,7 @@ func TestUnmarshal(t *testing.T) {
 				Name: "parse_with_preset",
 				Expect: func() *Config {
 					cfg := NewConfig()
-					from := signozstanzaentry.Field{FieldInterface: signozstanzaentry.NewBodyField("from")}
+					from := noiraistanzaentry.Field{FieldInterface: noiraistanzaentry.NewBodyField("from")}
 					cfg.ParseFrom = &from
 					cfg.Preset = "http"
 					return cfg

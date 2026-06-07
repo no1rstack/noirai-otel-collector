@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	signozstanzaentry "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/entry"
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
+	noiraistanzaentry "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/entry"
+	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
 	"github.com/stretchr/testify/require"
 	"go.opentelemetry.io/collector/component/componenttest"
 
@@ -174,8 +174,8 @@ func TestParser(t *testing.T) {
 		{
 			"with_timestamp",
 			func(p *Config) {
-				parseFrom := signozstanzaentry.Field{FieldInterface: entry.NewAttributeField("timestamp")}
-				p.TimeParser = &signozstanzahelper.TimeParser{
+				parseFrom := noiraistanzaentry.Field{FieldInterface: entry.NewAttributeField("timestamp")}
+				p.TimeParser = &noiraistanzahelper.TimeParser{
 					ParseFrom:  &parseFrom,
 					LayoutType: "epoch",
 					Layout:     "s",
@@ -196,8 +196,8 @@ func TestParser(t *testing.T) {
 		{
 			"with_scope",
 			func(p *Config) {
-				p.ScopeNameParser = &signozstanzahelper.ScopeNameParser{
-					ParseFrom: signozstanzaentry.Field{FieldInterface: entry.NewAttributeField("logger_name")},
+				p.ScopeNameParser = &noiraistanzahelper.ScopeNameParser{
+					ParseFrom: noiraistanzaentry.Field{FieldInterface: entry.NewAttributeField("logger_name")},
 				}
 			},
 			&entry.Entry{

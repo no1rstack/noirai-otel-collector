@@ -9,7 +9,7 @@ import (
 	"go.opentelemetry.io/collector/confmap"
 	"go.opentelemetry.io/collector/confmap/confmaptest"
 
-	signozlogspipelinestanzaoperator "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator"
+	noirailogspipelinestanzaoperator "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator"
 )
 
@@ -52,12 +52,12 @@ func (c ConfigUnmarshalTests) Run(t *testing.T) {
 }
 
 type anyOpConfig struct {
-	Operator signozlogspipelinestanzaoperator.Config `mapstructure:"operator"`
+	Operator noirailogspipelinestanzaoperator.Config `mapstructure:"operator"`
 }
 
 func newAnyOpConfig(opCfg operator.Builder) *anyOpConfig {
 	return &anyOpConfig{
-		Operator: signozlogspipelinestanzaoperator.Config{Builder: opCfg},
+		Operator: noirailogspipelinestanzaoperator.Config{Builder: opCfg},
 	}
 }
 

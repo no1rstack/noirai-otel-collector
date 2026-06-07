@@ -1,4 +1,4 @@
-package signozmeterconnector
+package noiraimeterconnector
 
 import (
 	"context"
@@ -15,8 +15,8 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.uber.org/zap"
 
-	"github.com/SigNoz/signoz-otel-collector/pkg/metering"
-	v1 "github.com/SigNoz/signoz-otel-collector/pkg/metering/v1"
+	"github.com/NoirAI/noirai-otel-collector/pkg/metering"
+	v1 "github.com/NoirAI/noirai-otel-collector/pkg/metering/v1"
 	"github.com/google/uuid"
 )
 
@@ -48,7 +48,7 @@ func newDimensionsMap(cfgDims []Dimension) map[string]struct{} {
 	return dimensionsMap
 }
 
-// initialize the signozmeterconnector
+// initialize the noiraimeterconnector
 func newConnector(logger *zap.Logger, settings connector.Settings, config component.Config) (*meterConnector, error) {
 	cfg := config.(*Config)
 
@@ -169,7 +169,7 @@ func (meterconnector *meterConnector) buildMetrics() pmetric.Metrics {
 	for _, meterMetrics := range meterconnector.aggregatedMeterMetrics.meterMetrics {
 		resourceMetrics := metrics.ResourceMetrics().AppendEmpty()
 		scopeMetrics := resourceMetrics.ScopeMetrics().AppendEmpty()
-		scopeMetrics.Scope().SetName("signozmeterconnector")
+		scopeMetrics.Scope().SetName("noiraimeterconnector")
 		// add connector id for single-writer in case of multiple connectors
 		scopeMetrics.Scope().Attributes().PutStr("connector_id", meterconnector.id.String())
 		// for each resource metric key we need 6 metrics (2 for each telemetry data type)

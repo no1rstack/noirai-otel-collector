@@ -7,8 +7,8 @@ import (
 )
 
 var (
-	Type      = component.MustNewType("signozkafkaexporter")
-	ScopeName = "github.com/SigNoz/signoz-otel-collector/exporter/signozkafkaexporter"
+	Type      = component.MustNewType("noiraikafkaexporter")
+	ScopeName = "github.com/NoirAI/noirai-otel-collector/exporter/noiraikafkaexporter"
 )
 
 const (

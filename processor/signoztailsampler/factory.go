@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package signoztailsampler // import "github.com/open-telemetry/opentelemetry-collector-contrib/processor/tailsamplingprocessor"
+package noiraitailsampler // import "github.com/open-telemetry/opentelemetry-collector-contrib/processor/tailsamplingprocessor"
 
 import (
 	"context"
@@ -25,7 +25,7 @@ import (
 	"go.opentelemetry.io/collector/consumer"
 	"go.opentelemetry.io/collector/processor"
 
-	"github.com/SigNoz/signoz-otel-collector/processor/signoztailsampler/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraitailsampler/internal/metadata"
 )
 
 var onceMetrics sync.Once

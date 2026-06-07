@@ -4,8 +4,8 @@ import (
 	"context"
 
 	"github.com/ClickHouse/clickhouse-go/v2/lib/driver"
-	"github.com/SigNoz/signoz-otel-collector/utils/fingerprint"
-	"github.com/SigNoz/signoz-otel-collector/utils/flatten"
+	"github.com/NoirAI/noirai-otel-collector/utils/fingerprint"
+	"github.com/NoirAI/noirai-otel-collector/utils/flatten"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/plog"
 	"go.opentelemetry.io/collector/pipeline"
@@ -13,7 +13,7 @@ import (
 )
 
 // attributeMetadataWriter writes resource+attribute fingerprint records to
-// signoz_metadata.distributed_attributes_metadata.
+// noirai_metadata.distributed_attributes_metadata.
 type attributeMetadataWriter struct {
 	conn   driver.Conn
 	logger *zap.Logger

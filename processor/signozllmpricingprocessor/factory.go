@@ -1,4 +1,4 @@
-package signozllmpricingprocessor // import "github.com/SigNoz/signoz-otel-collector/processor/signozllmpricingprocessor"
+package noiraillmpricingprocessor // import "github.com/NoirAI/noirai-otel-collector/processor/noiraillmpricingprocessor"
 
 import (
 	"context"
@@ -11,9 +11,9 @@ import (
 
 var processorCapabilities = consumer.Capabilities{MutatesData: true}
 
-const typeStr = "signozllmpricing"
+const typeStr = "noiraillmpricing"
 
-// NewFactory returns the component factory for signozllmpricingprocessor.
+// NewFactory returns the component factory for noiraillmpricingprocessor.
 func NewFactory() processor.Factory {
 	return processor.NewFactory(
 		component.MustNewType(typeStr),

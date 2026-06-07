@@ -13,11 +13,11 @@ import (
 )
 
 func Meter(settings component.TelemetrySettings) metric.Meter {
-	return settings.MeterProvider.Meter("github.com/SigNoz/signoz-otel-collector/connectors/signozmeterconnector")
+	return settings.MeterProvider.Meter("github.com/NoirAI/noirai-otel-collector/connectors/noiraimeterconnector")
 }
 
 func Tracer(settings component.TelemetrySettings) trace.Tracer {
-	return settings.TracerProvider.Tracer("github.com/SigNoz/signoz-otel-collector/connectors/signozmeterconnector")
+	return settings.TracerProvider.Tracer("github.com/NoirAI/noirai-otel-collector/connectors/noiraimeterconnector")
 }
 
 // TelemetryBuilder provides an interface for components to report telemetry

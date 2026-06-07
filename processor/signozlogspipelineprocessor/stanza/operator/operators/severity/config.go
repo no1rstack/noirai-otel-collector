@@ -5,15 +5,15 @@ package severity
 import (
 	"go.opentelemetry.io/collector/component"
 
-	signozlogspipelinestanzaoperator "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator"
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
+	noirailogspipelinestanzaoperator "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator"
+	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator"
 )
 
 const operatorType = "severity_parser"
 
 func init() {
-	signozlogspipelinestanzaoperator.Register(operatorType, func() operator.Builder { return NewConfig() })
+	noirailogspipelinestanzaoperator.Register(operatorType, func() operator.Builder { return NewConfig() })
 }
 
 // NewConfig creates a new severity parser config with default values
@@ -24,15 +24,15 @@ func NewConfig() *Config {
 // NewConfigWithID creates a new severity parser config with default values
 func NewConfigWithID(operatorID string) *Config {
 	return &Config{
-		TransformerConfig: signozstanzahelper.NewTransformerConfig(operatorID, operatorType),
-		SeverityConfig:    signozstanzahelper.NewSeverityConfig(),
+		TransformerConfig: noiraistanzahelper.NewTransformerConfig(operatorID, operatorType),
+		SeverityConfig:    noiraistanzahelper.NewSeverityConfig(),
 	}
 }
 
 // Config is the configuration of a severity parser operator.
 type Config struct {
-	signozstanzahelper.TransformerConfig `mapstructure:",squash"`
-	signozstanzahelper.SeverityConfig    `mapstructure:",omitempty,squash"`
+	noiraistanzahelper.TransformerConfig `mapstructure:",squash"`
+	noiraistanzahelper.SeverityConfig    `mapstructure:",omitempty,squash"`
 }
 
 // Build will build a severity parser operator.

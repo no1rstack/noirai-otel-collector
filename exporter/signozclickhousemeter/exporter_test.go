@@ -1,4 +1,4 @@
-package signozclickhousemeter
+package noiraiclickhousemeter
 
 import (
 	"context"
@@ -8,7 +8,7 @@ import (
 	cmock "github.com/srikanthccv/ClickHouse-go-mock"
 	"go.uber.org/zap/zaptest"
 
-	"github.com/SigNoz/signoz-otel-collector/pkg/pdatagen/pmetricsgen"
+	"github.com/NoirAI/noirai-otel-collector/pkg/pdatagen/pmetricsgen"
 	"github.com/stretchr/testify/require"
 	"github.com/zeebo/assert"
 	"go.opentelemetry.io/collector/pdata/pmetric"
@@ -46,7 +46,7 @@ func Test_prepareBatchSumWithNoRecordedValue(t *testing.T) {
 			unit:        "s",
 			typ:         pmetric.MetricTypeSum,
 			isMonotonic: true,
-			labels:      "{\"__name__\":\"system.cpu.time0\",\"__scope.name__\":\"go.signoz.io/app/reader\",\"__scope.schema_url__\":\"scope.schema_url\",\"__scope.version__\":\"1.0.0\",\"__temporality__\":\"Cumulative\",\"resource.attr_0\":\"value0\",\"scope.attr_0\":\"value0\",\"sum.attr_0\":\"1\"}",
+			labels:      "{\"__name__\":\"system.cpu.time0\",\"__scope.name__\":\"go.noirai.io/app/reader\",\"__scope.schema_url__\":\"scope.schema_url\",\"__scope.version__\":\"1.0.0\",\"__temporality__\":\"Cumulative\",\"resource.attr_0\":\"value0\",\"scope.attr_0\":\"value0\",\"sum.attr_0\":\"1\"}",
 		},
 	}
 	assert.Equal(t, len(expectedSamples), len(batch.samples))
@@ -88,7 +88,7 @@ func Test_prepareBatchGaugeWithNoRecordedValue(t *testing.T) {
 			unit:        "bytes",
 			typ:         pmetric.MetricTypeGauge,
 			isMonotonic: false,
-			labels:      "{\"__name__\":\"system.memory.usage0\",\"__scope.name__\":\"go.signoz.io/app/reader\",\"__scope.schema_url__\":\"scope.schema_url\",\"__scope.version__\":\"1.0.0\",\"__temporality__\":\"Unspecified\",\"gauge.attr_0\":\"1\",\"resource.attr_0\":\"value0\",\"scope.attr_0\":\"value0\"}",
+			labels:      "{\"__name__\":\"system.memory.usage0\",\"__scope.name__\":\"go.noirai.io/app/reader\",\"__scope.schema_url__\":\"scope.schema_url\",\"__scope.version__\":\"1.0.0\",\"__temporality__\":\"Unspecified\",\"gauge.attr_0\":\"1\",\"resource.attr_0\":\"value0\",\"scope.attr_0\":\"value0\"}",
 		},
 	}
 	assert.Equal(t, len(expectedSamples), len(batch.samples))

@@ -5,8 +5,8 @@ package severity
 import (
 	"testing"
 
-	signozstanzaentry "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/entry"
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
+	noiraistanzaentry "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/entry"
+	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 	"go.opentelemetry.io/collector/component/componenttest"
@@ -205,8 +205,8 @@ func TestSeverityParser(t *testing.T) {
 		},
 	}
 
-	rootField := signozstanzaentry.Field{FieldInterface: entry.NewBodyField()}
-	someField := signozstanzaentry.Field{FieldInterface: entry.NewBodyField("some_field")}
+	rootField := noiraistanzaentry.Field{FieldInterface: entry.NewBodyField()}
+	someField := noiraistanzaentry.Field{FieldInterface: entry.NewBodyField("some_field")}
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
@@ -251,10 +251,10 @@ func runSeverityParseTest(cfg *Config, ent *entry.Entry, buildErr bool, parseErr
 	}
 }
 
-func parseSeverityTestConfig(parseFrom signozstanzaentry.Field, preset string, mapping map[string]any) *Config {
+func parseSeverityTestConfig(parseFrom noiraistanzaentry.Field, preset string, mapping map[string]any) *Config {
 	cfg := NewConfigWithID("test_operator_id")
 	cfg.OutputIDs = []string{"output1"}
-	cfg.SeverityConfig = signozstanzahelper.SeverityConfig{
+	cfg.SeverityConfig = noiraistanzahelper.SeverityConfig{
 		ParseFrom: &parseFrom,
 		Preset:    preset,
 		Mapping:   mapping,
@@ -262,7 +262,7 @@ func parseSeverityTestConfig(parseFrom signozstanzaentry.Field, preset string, m
 	return cfg
 }
 
-func makeTestEntry(t *testing.T, field signozstanzaentry.Field, value any) *entry.Entry {
+func makeTestEntry(t *testing.T, field noiraistanzaentry.Field, value any) *entry.Entry {
 	e := entry.New()
 	require.NoError(t, e.Set(field, value))
 	return e

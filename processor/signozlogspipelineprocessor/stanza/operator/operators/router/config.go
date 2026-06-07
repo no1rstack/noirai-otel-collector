@@ -8,8 +8,8 @@ import (
 
 	"go.opentelemetry.io/collector/component"
 
-	signozlogspipelinestanzaoperator "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator"
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
+	noirailogspipelinestanzaoperator "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator"
+	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator/helper"
 )
@@ -17,7 +17,7 @@ import (
 const operatorType = "router"
 
 func init() {
-	signozlogspipelinestanzaoperator.Register(operatorType, func() operator.Builder { return NewConfig() })
+	noirailogspipelinestanzaoperator.Register(operatorType, func() operator.Builder { return NewConfig() })
 }
 
 // NewConfig config creates a new router operator config with default values
@@ -66,7 +66,7 @@ func (c Config) Build(set component.TelemetrySettings) (operator.Operator, error
 	// route so they can be injected into the single shared env at runtime.
 	allCompiledPatterns := map[string]func(s string) bool{}
 	for _, routeConfig := range c.Routes {
-		compiled, hasBodyFieldRef, compiledPatterns, err := signozstanzahelper.ExprCompileBool(routeConfig.Expression)
+		compiled, hasBodyFieldRef, compiledPatterns, err := noiraistanzahelper.ExprCompileBool(routeConfig.Expression)
 		if err != nil {
 			return nil, fmt.Errorf("failed to compile expression '%s': %w", routeConfig.Expression, err)
 		}

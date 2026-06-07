@@ -1,11 +1,11 @@
-package signozclickhousemetrics
+package noiraiclickhousemetrics
 
 import (
 	"math"
 	"testing"
 	"time"
 
-	pkgfingerprint "github.com/SigNoz/signoz-otel-collector/internal/common/fingerprint"
+	pkgfingerprint "github.com/NoirAI/noirai-otel-collector/internal/common/fingerprint"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"go.opentelemetry.io/collector/pdata/pcommon"

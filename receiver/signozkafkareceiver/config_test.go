@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package signozkafkareceiver
+package noiraikafkareceiver
 
 import (
 	"path/filepath"
@@ -15,8 +15,8 @@ import (
 	"go.opentelemetry.io/collector/confmap/confmaptest"
 	"go.opentelemetry.io/collector/confmap/xconfmap"
 
-	"github.com/SigNoz/signoz-otel-collector/internal/kafka"
-	"github.com/SigNoz/signoz-otel-collector/receiver/signozkafkareceiver/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/internal/kafka"
+	"github.com/NoirAI/noirai-otel-collector/receiver/noiraikafkareceiver/internal/metadata"
 )
 
 func TestLoadConfig(t *testing.T) {

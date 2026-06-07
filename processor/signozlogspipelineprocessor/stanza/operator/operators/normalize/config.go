@@ -6,8 +6,8 @@ import (
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/otel/metric"
 
-	signozlogspipelinestanzaoperator "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator"
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
+	noirailogspipelinestanzaoperator "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator"
+	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
 	"github.com/bytedance/sonic"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator"
 )
@@ -15,7 +15,7 @@ import (
 const operatorType = "normalize"
 
 func init() {
-	signozlogspipelinestanzaoperator.Register(operatorType, func() operator.Builder { return NewConfig() })
+	noirailogspipelinestanzaoperator.Register(operatorType, func() operator.Builder { return NewConfig() })
 }
 
 // NewConfig creates a new normalize config with default values
@@ -26,13 +26,13 @@ func NewConfig() *Config {
 // NewConfigWithID creates a new JSON parser config with default values
 func NewConfigWithID(operatorID string) *Config {
 	return &Config{
-		TransformerConfig: signozstanzahelper.NewTransformerConfig(operatorID, operatorType),
+		TransformerConfig: noiraistanzahelper.NewTransformerConfig(operatorID, operatorType),
 	}
 }
 
 // Config is the configuration of a JSON parser operator.
 type Config struct {
-	signozstanzahelper.TransformerConfig `mapstructure:",squash"`
+	noiraistanzahelper.TransformerConfig `mapstructure:",squash"`
 }
 
 // Build will build a JSON parser operator.
@@ -42,8 +42,8 @@ func (c Config) Build(set component.TelemetrySettings) (operator.Operator, error
 		return nil, err
 	}
 
-	logsProcessed, err := set.MeterProvider.Meter("github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/operators/normalize").Int64Counter(
-		"signoz_normalize_operator_logs_processed",
+	logsProcessed, err := set.MeterProvider.Meter("github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/operators/normalize").Int64Counter(
+		"noirai_normalize_operator_logs_processed",
 		metric.WithDescription("Number of log entries processed by the normalize operator"),
 	)
 	if err != nil {

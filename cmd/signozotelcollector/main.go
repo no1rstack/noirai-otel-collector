@@ -10,11 +10,11 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/SigNoz/signoz-otel-collector/cmd/signozotelcollector/config"
-	"github.com/SigNoz/signoz-otel-collector/cmd/signozotelcollector/migrate"
-	"github.com/SigNoz/signoz-otel-collector/constants"
-	"github.com/SigNoz/signoz-otel-collector/service"
-	"github.com/SigNoz/signoz-otel-collector/signozcol"
+	"github.com/NoirAI/noirai-otel-collector/cmd/noiraiotelcollector/config"
+	"github.com/NoirAI/noirai-otel-collector/cmd/noiraiotelcollector/migrate"
+	"github.com/NoirAI/noirai-otel-collector/constants"
+	"github.com/NoirAI/noirai-otel-collector/noiraicol"
+	"github.com/NoirAI/noirai-otel-collector/service"
 	"github.com/spf13/cobra"
 	flag "github.com/spf13/pflag"
 	"github.com/spf13/viper"
@@ -29,7 +29,7 @@ func main() {
 	}
 
 	rootCmd := &cobra.Command{
-		Use: "signoz-otel-collector",
+		Use: "noirai-otel-collector",
 		CompletionOptions: cobra.CompletionOptions{
 			DisableDefaultCmd: true,
 		},
@@ -37,7 +37,7 @@ func main() {
 		PersistentPreRun: func(cmd *cobra.Command, args []string) {
 			v := viper.New()
 
-			v.SetEnvPrefix("signoz-otel-collector")
+			v.SetEnvPrefix("noirai-otel-collector")
 			v.SetEnvKeyReplacer(strings.NewReplacer("-", "_"))
 			v.AutomaticEnv()
 
@@ -65,8 +65,8 @@ func main() {
 
 			ctx := context.Background()
 
-			coll := signozcol.New(
-				signozcol.WrappedCollectorSettings{
+			coll := noiraicol.New(
+				noiraicol.WrappedCollectorSettings{
 					ConfigPaths:  []string{collectorConfig},
 					Version:      constants.Version,
 					Desc:         constants.Desc,

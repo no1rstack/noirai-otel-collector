@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package signozawsfirehosereceiver // import "github.com/SigNoz/signoz-otel-collector/receiver/signozawsfirehosereceiver"
+package noiraiawsfirehosereceiver // import "github.com/NoirAI/noirai-otel-collector/receiver/noiraiawsfirehosereceiver"
 
 import (
 	"context"
@@ -15,11 +15,11 @@ import (
 	"go.opentelemetry.io/collector/receiver"
 	"go.uber.org/zap"
 
-	"github.com/SigNoz/signoz-otel-collector/receiver/signozawsfirehosereceiver/internal/metadata"
-	"github.com/SigNoz/signoz-otel-collector/receiver/signozawsfirehosereceiver/internal/unmarshaler"
-	"github.com/SigNoz/signoz-otel-collector/receiver/signozawsfirehosereceiver/internal/unmarshaler/cwlog"
-	"github.com/SigNoz/signoz-otel-collector/receiver/signozawsfirehosereceiver/internal/unmarshaler/cwmetricstream"
-	"github.com/SigNoz/signoz-otel-collector/receiver/signozawsfirehosereceiver/internal/unmarshaler/otlpmetricstream"
+	"github.com/NoirAI/noirai-otel-collector/receiver/noiraiawsfirehosereceiver/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/receiver/noiraiawsfirehosereceiver/internal/unmarshaler"
+	"github.com/NoirAI/noirai-otel-collector/receiver/noiraiawsfirehosereceiver/internal/unmarshaler/cwlog"
+	"github.com/NoirAI/noirai-otel-collector/receiver/noiraiawsfirehosereceiver/internal/unmarshaler/cwmetricstream"
+	"github.com/NoirAI/noirai-otel-collector/receiver/noiraiawsfirehosereceiver/internal/unmarshaler/otlpmetricstream"
 )
 
 const (

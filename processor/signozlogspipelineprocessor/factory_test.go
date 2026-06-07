@@ -1,12 +1,12 @@
 // Brought in as is from logstransform processor in opentelemetry-collector-contrib
-package signozlogspipelineprocessor
+package noirailogspipelineprocessor
 
 import (
 	"context"
 	"testing"
 
-	signozlogspipelinestanzaadapter "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/adapter"
-	signozlogspipelinestanzaoperator "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator"
+	noirailogspipelinestanzaadapter "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/adapter"
+	noirailogspipelinestanzaoperator "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator"
 	"github.com/stretchr/testify/assert"
 	"go.opentelemetry.io/collector/component/componenttest"
 	"go.opentelemetry.io/collector/consumer/consumertest"
@@ -16,7 +16,7 @@ import (
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator/helper"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator/parser/regex"
 
-	"github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/internal/metadata"
 )
 
 func TestCreateDefaultConfig(t *testing.T) {
@@ -29,8 +29,8 @@ func TestCreateDefaultConfig(t *testing.T) {
 func TestCreateProcessor(t *testing.T) {
 	factory := NewFactory()
 	cfg := &Config{
-		BaseConfig: signozlogspipelinestanzaadapter.BaseConfig{
-			Operators: []signozlogspipelinestanzaoperator.Config{
+		BaseConfig: noirailogspipelinestanzaadapter.BaseConfig{
+			Operators: []noirailogspipelinestanzaoperator.Config{
 				{
 					Builder: func() *regex.Config {
 						cfg := regex.NewConfig()
@@ -59,8 +59,8 @@ func TestCreateProcessor(t *testing.T) {
 func TestInvalidOperators(t *testing.T) {
 	factory := NewFactory()
 	cfg := &Config{
-		BaseConfig: signozlogspipelinestanzaadapter.BaseConfig{
-			Operators: []signozlogspipelinestanzaoperator.Config{
+		BaseConfig: noirailogspipelinestanzaadapter.BaseConfig{
+			Operators: []noirailogspipelinestanzaoperator.Config{
 				{
 					// invalid due to missing regex
 					Builder: regex.NewConfig(),

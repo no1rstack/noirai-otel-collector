@@ -1,4 +1,4 @@
-package signoztailsampler
+package noiraitailsampler
 
 import (
 	"context"
@@ -17,9 +17,9 @@ import (
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
 
-	"github.com/SigNoz/signoz-otel-collector/processor/signoztailsampler/internal/idbatcher"
-	"github.com/SigNoz/signoz-otel-collector/processor/signoztailsampler/internal/sampling"
-	"github.com/SigNoz/signoz-otel-collector/processor/signoztailsampler/internal/timeutils"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraitailsampler/internal/idbatcher"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraitailsampler/internal/sampling"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraitailsampler/internal/timeutils"
 )
 
 const (

@@ -3,7 +3,7 @@ package opamp
 import (
 	"context"
 
-	"github.com/SigNoz/signoz-otel-collector/signozcol"
+	"github.com/NoirAI/noirai-otel-collector/noiraicol"
 	"go.uber.org/zap"
 )
 
@@ -11,7 +11,7 @@ type simpleClient struct {
 	baseClient
 }
 
-func NewSimpleClient(coll *signozcol.WrappedCollector, logger *zap.Logger) *simpleClient {
+func NewSimpleClient(coll *noiraicol.WrappedCollector, logger *zap.Logger) *simpleClient {
 	return &simpleClient{
 		baseClient: baseClient{
 			coll:    coll,

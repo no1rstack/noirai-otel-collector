@@ -1,12 +1,12 @@
-package signozclickhousemetrics
+package noiraiclickhousemetrics
 
 import (
 	"context"
 	"errors"
 
 	"github.com/ClickHouse/clickhouse-go/v2"
-	internalmetadata "github.com/SigNoz/signoz-otel-collector/exporter/signozclickhousemetrics/internal/metadata"
-	"github.com/SigNoz/signoz-otel-collector/usage"
+	internalmetadata "github.com/NoirAI/noirai-otel-collector/exporter/noiraiclickhousemetrics/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/usage"
 	"github.com/google/uuid"
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/config/configoptional"
@@ -48,7 +48,7 @@ func createMetricsExporter(ctx context.Context, set exporter.Settings,
 		usage.Options{
 			ReportingInterval: usage.DefaultCollectionInterval,
 		},
-		"signoz_metrics",
+		"noirai_metrics",
 		UsageExporter,
 		set.Logger,
 	)
@@ -93,7 +93,7 @@ func createDefaultConfig() component.Config {
 		QueueBatchConfig: configoptional.Some(exporterhelper.NewDefaultQueueConfig()),
 		DSN:              "tcp://localhost:9000",
 		EnableExpHist:    false,
-		Database:         "signoz_metrics",
+		Database:         "noirai_metrics",
 		SamplesTable:     "distributed_samples_v4",
 		TimeSeriesTable:  "distributed_time_series_v4",
 		ExpHistTable:     "distributed_exp_hist",

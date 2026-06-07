@@ -5,9 +5,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	signozstanzaentry "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/entry"
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
-	"github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/operatortest"
+	noiraistanzaentry "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/entry"
+	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
+	"github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/operatortest"
 )
 
 func TestConfig(t *testing.T) {
@@ -30,8 +30,8 @@ func TestConfig(t *testing.T) {
 			{
 				Name: "spanid",
 				Expect: func() *Config {
-					parseFrom := signozstanzaentry.Field{FieldInterface: signozstanzaentry.NewBodyField("app_span_id")}
-					cfg := signozstanzahelper.SpanIDConfig{}
+					parseFrom := noiraistanzaentry.Field{FieldInterface: noiraistanzaentry.NewBodyField("app_span_id")}
+					cfg := noiraistanzahelper.SpanIDConfig{}
 					cfg.ParseFrom = &parseFrom
 
 					c := NewConfig()
@@ -42,8 +42,8 @@ func TestConfig(t *testing.T) {
 			{
 				Name: "traceid",
 				Expect: func() *Config {
-					parseFrom := signozstanzaentry.Field{FieldInterface: signozstanzaentry.NewBodyField("app_trace_id")}
-					cfg := signozstanzahelper.TraceIDConfig{}
+					parseFrom := noiraistanzaentry.Field{FieldInterface: noiraistanzaentry.NewBodyField("app_trace_id")}
+					cfg := noiraistanzahelper.TraceIDConfig{}
 					cfg.ParseFrom = &parseFrom
 
 					c := NewConfig()
@@ -54,8 +54,8 @@ func TestConfig(t *testing.T) {
 			{
 				Name: "trace_flags",
 				Expect: func() *Config {
-					parseFrom := signozstanzaentry.Field{FieldInterface: signozstanzaentry.NewBodyField("app_trace_flags_id")}
-					cfg := signozstanzahelper.TraceFlagsConfig{}
+					parseFrom := noiraistanzaentry.Field{FieldInterface: noiraistanzaentry.NewBodyField("app_trace_flags_id")}
+					cfg := noiraistanzahelper.TraceFlagsConfig{}
 					cfg.ParseFrom = &parseFrom
 
 					c := NewConfig()

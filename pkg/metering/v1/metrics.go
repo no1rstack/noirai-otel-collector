@@ -3,14 +3,14 @@ package v1
 import (
 	"regexp"
 
-	"github.com/SigNoz/signoz-otel-collector/pkg/metering"
+	"github.com/NoirAI/noirai-otel-collector/pkg/metering"
 
 	"go.opentelemetry.io/collector/pdata/pmetric"
 	"go.uber.org/zap"
 )
 
 var (
-	excludeRegex = regexp.MustCompile("^(signoz|otelcol).*")
+	excludeRegex = regexp.MustCompile("^(noirai|otelcol).*")
 )
 
 type metrics struct {
@@ -101,7 +101,7 @@ func (meter *metrics) CountPerResource(rmd pmetric.ResourceMetrics) int {
 			case pmetric.MetricTypeExponentialHistogram:
 				// Intentionally not counted. Exp histograms aren't billable on Cloud yet,
 				// and counting each bucket as a sample would explode the count.
-				// Kept consistent with the signozclickhousemetrics exporter's writeExpHist,
+				// Kept consistent with the noiraiclickhousemetrics exporter's writeExpHist,
 				// which also does not count these toward usage.
 				// TODO(srikanthccv): revisit when exp histograms are supported on Cloud.
 			}

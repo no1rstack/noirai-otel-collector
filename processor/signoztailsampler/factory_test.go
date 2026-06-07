@@ -1,11 +1,11 @@
-package signoztailsampler
+package noiraitailsampler
 
 import (
 	"context"
 	"path/filepath"
 	"testing"
 
-	"github.com/SigNoz/signoz-otel-collector/processor/signoztailsampler/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraitailsampler/internal/metadata"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"go.opentelemetry.io/collector/component"

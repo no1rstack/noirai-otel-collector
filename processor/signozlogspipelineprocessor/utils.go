@@ -1,11 +1,11 @@
 // Brought in as is from pkg/stanza/adapter/converter.go in opentelemetry-collector-contrib
-package signozlogspipelineprocessor
+package noirailogspipelineprocessor
 
 import (
 	"fmt"
 	"strings"
 
-	signozstanzaentry "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/entry"
+	noiraistanzaentry "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/entry"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/adapter"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/entry"
 	"go.opentelemetry.io/collector/pdata/pcommon"
@@ -53,7 +53,7 @@ func convertEntriesToPlogs(entries []*entry.Entry) plog.Logs {
 func upsertToMap(obsMap map[string]any, dest pcommon.Map) {
 	dest.EnsureCapacity(len(obsMap))
 	for k, v := range obsMap {
-		if !strings.HasPrefix(k, signozstanzaentry.InternalTempAttributePrefix) {
+		if !strings.HasPrefix(k, noiraistanzaentry.InternalTempAttributePrefix) {
 			upsertToAttributeVal(v, dest.PutEmpty(k))
 		}
 	}

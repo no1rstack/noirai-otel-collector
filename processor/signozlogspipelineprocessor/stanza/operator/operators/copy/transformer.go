@@ -6,15 +6,15 @@ import (
 	"context"
 	"fmt"
 
-	signozstanzaentry "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/entry"
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
+	noiraistanzaentry "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/entry"
+	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/entry"
 )
 
 // Transformer copies a value from one field and creates a new field with that value
 type Transformer struct {
-	signozstanzahelper.TransformerOperator
-	From signozstanzaentry.Field
+	noiraistanzahelper.TransformerOperator
+	From noiraistanzaentry.Field
 	To   entry.Field
 }
 

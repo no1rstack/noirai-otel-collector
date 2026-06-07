@@ -1,6 +1,6 @@
 // brought in as is from "github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator/helper"
-// with minor changes to use signozstanzaentry.Field instead of entry.Field
-package signozstanzahelper
+// with minor changes to use noiraistanzaentry.Field instead of entry.Field
+package noiraistanzahelper
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 
 	"go.opentelemetry.io/collector/component"
 
-	signozstanzaentry "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/entry"
+	noiraistanzaentry "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/entry"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/entry"
 )
 
@@ -111,7 +111,7 @@ func NewSeverityConfig() SeverityConfig {
 
 // SeverityConfig allows users to specify how to parse a severity from a field.
 type SeverityConfig struct {
-	ParseFrom     *signozstanzaentry.Field `mapstructure:"parse_from,omitempty"`
+	ParseFrom     *noiraistanzaentry.Field `mapstructure:"parse_from,omitempty"`
 	Preset        string                   `mapstructure:"preset,omitempty"`
 	Mapping       map[string]any           `mapstructure:"mapping,omitempty"`
 	OverwriteText bool                     `mapstructure:"overwrite_text,omitempty"`

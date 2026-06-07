@@ -15,7 +15,7 @@ import (
 
 func Test_LogFunctions(t *testing.T) {
 	expected := ottlfuncs.StandardFuncs[*ottllog.TransformContext]()
-	for name, factory := range SignozLogFunctions() {
+	for name, factory := range NoirAILogFunctions() {
 		expected[name] = factory
 	}
 

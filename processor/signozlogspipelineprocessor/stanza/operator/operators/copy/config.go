@@ -7,9 +7,9 @@ import (
 
 	"go.opentelemetry.io/collector/component"
 
-	signozstanzaentry "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/entry"
-	signozlogspipelinestanzaoperator "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator"
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
+	noiraistanzaentry "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/entry"
+	noirailogspipelinestanzaoperator "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator"
+	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/entry"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator"
 )
@@ -17,7 +17,7 @@ import (
 const operatorType = "copy"
 
 func init() {
-	signozlogspipelinestanzaoperator.Register(operatorType, func() operator.Builder { return NewConfig() })
+	noirailogspipelinestanzaoperator.Register(operatorType, func() operator.Builder { return NewConfig() })
 }
 
 // NewConfig creates a new copy operator config with default values
@@ -28,14 +28,14 @@ func NewConfig() *Config {
 // NewConfigWithID creates a new copy operator config with default values
 func NewConfigWithID(operatorID string) *Config {
 	return &Config{
-		TransformerConfig: signozstanzahelper.NewTransformerConfig(operatorID, operatorType),
+		TransformerConfig: noiraistanzahelper.NewTransformerConfig(operatorID, operatorType),
 	}
 }
 
 // Config is the configuration of a copy operator
 type Config struct {
-	signozstanzahelper.TransformerConfig `mapstructure:",squash"`
-	From                                 signozstanzaentry.Field `mapstructure:"from"`
+	noiraistanzahelper.TransformerConfig `mapstructure:",squash"`
+	From                                 noiraistanzaentry.Field `mapstructure:"from"`
 	To                                   entry.Field             `mapstructure:"to"`
 }
 
@@ -46,7 +46,7 @@ func (c Config) Build(set component.TelemetrySettings) (operator.Operator, error
 		return nil, err
 	}
 
-	if c.From == (signozstanzaentry.Field{FieldInterface: entry.NewNilField()}) {
+	if c.From == (noiraistanzaentry.Field{FieldInterface: entry.NewNilField()}) {
 		return nil, fmt.Errorf("copy: missing from field")
 	}
 

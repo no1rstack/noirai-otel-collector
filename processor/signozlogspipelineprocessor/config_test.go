@@ -1,5 +1,5 @@
 // Brought in as is from logstransform processor in opentelemetry-collector-contrib
-package signozlogspipelineprocessor
+package noirailogspipelineprocessor
 
 import (
 	"path/filepath"
@@ -11,11 +11,11 @@ import (
 
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/entry"
 
-	signozlogspipelinestanzaadapter "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/adapter"
-	signozstanzaentry "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/entry"
-	signozlogspipelinestanzaoperator "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator"
-	signozstanzahelper "github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/helper"
-	"github.com/SigNoz/signoz-otel-collector/processor/signozlogspipelineprocessor/stanza/operator/operators/regex"
+	noirailogspipelinestanzaadapter "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/adapter"
+	noiraistanzaentry "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/entry"
+	noirailogspipelinestanzaoperator "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator"
+	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
+	"github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/operators/regex"
 )
 
 func TestLoadConfig(t *testing.T) {
@@ -25,18 +25,18 @@ func TestLoadConfig(t *testing.T) {
 	cfg := factory.CreateDefaultConfig()
 	assert.NoError(t, cm.Unmarshal(cfg))
 	assert.Equal(t, &Config{
-		BaseConfig: signozlogspipelinestanzaadapter.BaseConfig{
-			Operators: []signozlogspipelinestanzaoperator.Config{
+		BaseConfig: noirailogspipelinestanzaadapter.BaseConfig{
+			Operators: []noirailogspipelinestanzaoperator.Config{
 				{
 					Builder: func() *regex.Config {
 						cfg := regex.NewConfig()
 						cfg.Regex = "^(?P<time>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}) (?P<sev>[A-Z]*) (?P<msg>.*)$"
-						sevField := signozstanzaentry.Field{FieldInterface: entry.NewAttributeField("sev")}
-						sevCfg := signozstanzahelper.NewSeverityConfig()
+						sevField := noiraistanzaentry.Field{FieldInterface: entry.NewAttributeField("sev")}
+						sevCfg := noiraistanzahelper.NewSeverityConfig()
 						sevCfg.ParseFrom = &sevField
 						cfg.SeverityConfig = &sevCfg
-						timeField := signozstanzaentry.Field{FieldInterface: entry.NewAttributeField("time")}
-						timeCfg := signozstanzahelper.NewTimeParser()
+						timeField := noiraistanzaentry.Field{FieldInterface: entry.NewAttributeField("time")}
+						timeCfg := noiraistanzahelper.NewTimeParser()
 						timeCfg.Layout = "%Y-%m-%d %H:%M:%S"
 						timeCfg.ParseFrom = &timeField
 						cfg.TimeParser = &timeCfg

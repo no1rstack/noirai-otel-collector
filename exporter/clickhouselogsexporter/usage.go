@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/SigNoz/signoz-otel-collector/pkg/metering"
-	"github.com/SigNoz/signoz-otel-collector/usage"
+	"github.com/NoirAI/noirai-otel-collector/pkg/metering"
+	"github.com/NoirAI/noirai-otel-collector/usage"
 	"github.com/goccy/go-json"
 	"github.com/google/uuid"
 	"go.opencensus.io/metric/metricdata"
@@ -16,35 +16,35 @@ import (
 )
 
 const (
-	SigNozSentLogRecordsKey      = "singoz_sent_log_records"
-	SigNozSentLogRecordsBytesKey = "singoz_sent_log_records_bytes"
-	SigNozLogsCount              = "signoz_logs_count"
-	SigNozLogsBytes              = "signoz_logs_bytes"
+	NoirAISentLogRecordsKey      = "singoz_sent_log_records"
+	NoirAISentLogRecordsBytesKey = "singoz_sent_log_records_bytes"
+	NoirAILogsCount              = "noirai_logs_count"
+	NoirAILogsBytes              = "noirai_logs_bytes"
 )
 
 var (
 	// Measures for usage
-	ExporterSigNozSentLogRecords = stats.Int64(
-		SigNozSentLogRecordsKey,
-		"Number of signoz log records successfully sent to destination.",
+	ExporterNoirAISentLogRecords = stats.Int64(
+		NoirAISentLogRecordsKey,
+		"Number of noirai log records successfully sent to destination.",
 		stats.UnitDimensionless)
-	ExporterSigNozSentLogRecordsBytes = stats.Int64(
-		SigNozSentLogRecordsBytesKey,
-		"Total size of signoz log records successfully sent to destination.",
+	ExporterNoirAISentLogRecordsBytes = stats.Int64(
+		NoirAISentLogRecordsBytesKey,
+		"Total size of noirai log records successfully sent to destination.",
 		stats.UnitDimensionless)
 
 	// Views for usage
 	LogsCountView = &view.View{
-		Name:        SigNozLogsCount,
-		Measure:     ExporterSigNozSentLogRecords,
-		Description: "The number of logs exported to signoz",
+		Name:        NoirAILogsCount,
+		Measure:     ExporterNoirAISentLogRecords,
+		Description: "The number of logs exported to noirai",
 		Aggregation: view.Sum(),
 		TagKeys:     []tag.Key{usage.TagTenantKey, usage.TagExporterIdKey},
 	}
 	LogsSizeView = &view.View{
-		Name:        SigNozLogsBytes,
-		Measure:     ExporterSigNozSentLogRecordsBytes,
-		Description: "The size of logs exported to signoz",
+		Name:        NoirAILogsBytes,
+		Measure:     ExporterNoirAISentLogRecordsBytes,
+		Description: "The size of logs exported to noirai",
 		Aggregation: view.Sum(),
 		TagKeys:     []tag.Key{usage.TagTenantKey, usage.TagExporterIdKey},
 	}
@@ -53,7 +53,7 @@ var (
 func UsageExporter(metrics []*metricdata.Metric, id uuid.UUID) (map[string]usage.Usage, error) {
 	data := map[string]usage.Usage{}
 	for _, metric := range metrics {
-		if !strings.Contains(metric.Descriptor.Name, SigNozLogsCount) && !strings.Contains(metric.Descriptor.Name, SigNozLogsBytes) {
+		if !strings.Contains(metric.Descriptor.Name, NoirAILogsCount) && !strings.Contains(metric.Descriptor.Name, NoirAILogsBytes) {
 			continue
 		}
 		exporterIndex := usage.GetIndexOfLabel(metric.Descriptor.LabelKeys, usage.ExporterIDKey)
@@ -62,7 +62,7 @@ func UsageExporter(metrics []*metricdata.Metric, id uuid.UUID) (map[string]usage
 			return nil, fmt.Errorf("usage: failed to get index of labels")
 		}
 
-		if strings.Contains(metric.Descriptor.Name, SigNozLogsCount) {
+		if strings.Contains(metric.Descriptor.Name, NoirAILogsCount) {
 			for _, v := range metric.TimeSeries {
 				if v.LabelValues[exporterIndex].Value != id.String() {
 					continue
@@ -77,7 +77,7 @@ func UsageExporter(metrics []*metricdata.Metric, id uuid.UUID) (map[string]usage
 					}
 				}
 			}
-		} else if strings.Contains(metric.Descriptor.Name, SigNozLogsBytes) {
+		} else if strings.Contains(metric.Descriptor.Name, NoirAILogsBytes) {
 			for _, v := range metric.TimeSeries {
 				if v.LabelValues[exporterIndex].Value != id.String() {
 					continue
@@ -100,7 +100,7 @@ func UsageExporter(metrics []*metricdata.Metric, id uuid.UUID) (map[string]usage
 func getResourceAttributesByte(resource pcommon.Resource) ([]byte, error) {
 	filteredResources := map[string]any{}
 	resource.Attributes().Range(func(k string, v pcommon.Value) bool {
-		if !metering.ExcludeSigNozWorkspaceResourceAttrs.MatchString(k) {
+		if !metering.ExcludeNoirAIWorkspaceResourceAttrs.MatchString(k) {
 			filteredResources[k] = v.AsRaw()
 		}
 		return true

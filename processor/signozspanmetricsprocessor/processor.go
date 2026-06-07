@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package signozspanmetricsprocessor
+package noiraispanmetricsprocessor
 
 import (
 	"bytes"
@@ -39,7 +39,7 @@ import (
 	conventions "go.opentelemetry.io/collector/semconv/v1.6.1"
 	"go.uber.org/zap"
 
-	"github.com/SigNoz/signoz-otel-collector/processor/signozspanmetricsprocessor/internal/cache"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraispanmetricsprocessor/internal/cache"
 )
 
 const (
@@ -52,7 +52,7 @@ const (
 	metricKeySeparator      = string(byte(0))
 	traceIDKey              = "trace_id"
 
-	signozID = "signoz.collector.id"
+	noiraiID = "noirai.collector.id"
 
 	defaultDimensionsCacheSize = 1000
 	resourcePrefix             = "resource_"
@@ -148,28 +148,28 @@ type processorImp struct {
 	tracesConsumer  consumer.Traces
 
 	// Additional dimensions to add to metrics.
-	dimensions             []dimension // signoz_latency metric
-	expDimensions          []dimension // signoz_latency exphisto metric
-	callDimensions         []dimension // signoz_calls_total metric
-	dbCallDimensions       []dimension // signoz_db_latency_* metric
-	externalCallDimensions []dimension // signoz_external_call_latency_* metric
+	dimensions             []dimension // noirai_latency metric
+	expDimensions          []dimension // noirai_latency exphisto metric
+	callDimensions         []dimension // noirai_calls_total metric
+	dbCallDimensions       []dimension // noirai_db_latency_* metric
+	externalCallDimensions []dimension // noirai_external_call_latency_* metric
 
 	// The starting time of the data points.
 	startTimestamp pcommon.Timestamp
 
 	// Histogram.
-	histograms    map[metricKey]*histogramData // signoz_latency metric
+	histograms    map[metricKey]*histogramData // noirai_latency metric
 	latencyBounds []float64
 
 	expHistograms map[metricKey]*exponentialHistogram
 
-	callHistograms    map[metricKey]*histogramData // signoz_calls_total metric
+	callHistograms    map[metricKey]*histogramData // noirai_calls_total metric
 	callLatencyBounds []float64
 
-	dbCallHistograms    map[metricKey]*histogramData // signoz_db_latency_* metric
+	dbCallHistograms    map[metricKey]*histogramData // noirai_db_latency_* metric
 	dbCallLatencyBounds []float64
 
-	externalCallHistograms    map[metricKey]*histogramData // signoz_external_call_latency_* metric
+	externalCallHistograms    map[metricKey]*histogramData // noirai_external_call_latency_* metric
 	externalCallLatencyBounds []float64
 
 	keyBuf *bytes.Buffer
@@ -258,7 +258,7 @@ func (h *exponentialHistogram) Observe(value float64) {
 }
 
 func newProcessor(logger *zap.Logger, instanceID string, config component.Config, ticker *clock.Ticker) (*processorImp, error) {
-	logger.Info("Building signozspanmetricsprocessor with config", zap.Any("config", config))
+	logger.Info("Building noiraispanmetricsprocessor with config", zap.Any("config", config))
 	pConfig := config.(*Config)
 
 	// Set default time bucket interval if not specified
@@ -443,7 +443,7 @@ type getExporters interface {
 
 // Start implements the component.Component interface.
 func (p *processorImp) Start(ctx context.Context, host component.Host) error {
-	p.logger.Info("Starting signozspanmetricsprocessor with config", zap.Any("config", p.config))
+	p.logger.Info("Starting noiraispanmetricsprocessor with config", zap.Any("config", p.config))
 
 	ge, ok := host.(getExporters)
 	if !ok {
@@ -466,14 +466,14 @@ func (p *processorImp) Start(ctx context.Context, host component.Host) error {
 
 		availableMetricsExporters = append(availableMetricsExporters, k.String())
 
-		p.logger.Debug("Looking for signozspanmetrics exporter from available exporters",
-			zap.String("signozspanmetrics-exporter", p.config.MetricsExporter),
+		p.logger.Debug("Looking for noiraispanmetrics exporter from available exporters",
+			zap.String("noiraispanmetrics-exporter", p.config.MetricsExporter),
 			zap.Any("available-exporters", availableMetricsExporters),
 		)
 		for _, name := range exporterNames {
 			if k.String() == name {
 				p.metricsConsumer = append(p.metricsConsumer, metricsExp)
-				p.logger.Info("Found exporter", zap.String("signozspanmetrics-exporter", name))
+				p.logger.Info("Found exporter", zap.String("noiraispanmetrics-exporter", name))
 			}
 		}
 	}
@@ -481,7 +481,7 @@ func (p *processorImp) Start(ctx context.Context, host component.Host) error {
 		return fmt.Errorf("failed to find metrics exporter: '%s'; please configure metrics_exporter from one of: %+v",
 			p.config.MetricsExporter, availableMetricsExporters)
 	}
-	p.logger.Info("Started signozspanmetricsprocessor")
+	p.logger.Info("Started noiraispanmetricsprocessor")
 
 	p.started = true
 	p.wg.Add(1)
@@ -502,7 +502,7 @@ func (p *processorImp) Start(ctx context.Context, host component.Host) error {
 
 // Shutdown implements the component.Component interface.
 func (p *processorImp) Shutdown(ctx context.Context) error {
-	p.logger.Info("Shutting down signozspanmetricsprocessor")
+	p.logger.Info("Shutting down noiraispanmetricsprocessor")
 	p.shutdownOnce.Do(func() {
 		if p.started {
 			p.logger.Info("Stopping ticker")
@@ -561,7 +561,7 @@ func (p *processorImp) exportMetrics(ctx context.Context) {
 func (p *processorImp) buildMetrics() (pmetric.Metrics, error) {
 	m := pmetric.NewMetrics()
 	ilm := m.ResourceMetrics().AppendEmpty().ScopeMetrics().AppendEmpty()
-	ilm.Scope().SetName("signozspanmetricsprocessor")
+	ilm.Scope().SetName("noiraispanmetricsprocessor")
 
 	if err := p.collectCallMetrics(ilm); err != nil {
 		return pmetric.Metrics{}, err
@@ -637,7 +637,7 @@ func (p *processorImp) logCardinalityInfo() {
 // into the given instrumentation library metrics.
 func (p *processorImp) collectLatencyMetrics(ilm pmetric.ScopeMetrics) error {
 	mLatency := ilm.Metrics().AppendEmpty()
-	mLatency.SetName("signoz_latency")
+	mLatency.SetName("noirai_latency")
 	mLatency.SetUnit("ms")
 	mLatency.SetEmptyHistogram().SetAggregationTemporality(p.config.GetAggregationTemporality())
 	dps := mLatency.Histogram().DataPoints()
@@ -668,7 +668,7 @@ func (p *processorImp) collectLatencyMetrics(ilm pmetric.ScopeMetrics) error {
 // into the given instrumentation library metrics.
 func (p *processorImp) collectExpHistogramMetrics(ilm pmetric.ScopeMetrics) error {
 	mExpLatency := ilm.Metrics().AppendEmpty()
-	mExpLatency.SetName("signoz_latency")
+	mExpLatency.SetName("noirai_latency")
 	mExpLatency.SetUnit("ms")
 	mExpLatency.SetEmptyExponentialHistogram().SetAggregationTemporality(p.config.GetAggregationTemporality())
 	dps := mExpLatency.ExponentialHistogram().DataPoints()
@@ -694,13 +694,13 @@ func (p *processorImp) collectExpHistogramMetrics(ilm pmetric.ScopeMetrics) erro
 // into the given instrumentation library metrics.
 func (p *processorImp) collectDBCallMetrics(ilm pmetric.ScopeMetrics) error {
 	mDBCallSum := ilm.Metrics().AppendEmpty()
-	mDBCallSum.SetName("signoz_db_latency_sum")
+	mDBCallSum.SetName("noirai_db_latency_sum")
 	mDBCallSum.SetUnit("1")
 	mDBCallSum.SetEmptySum().SetIsMonotonic(true)
 	mDBCallSum.Sum().SetAggregationTemporality(p.config.GetAggregationTemporality())
 
 	mDBCallCount := ilm.Metrics().AppendEmpty()
-	mDBCallCount.SetName("signoz_db_latency_count")
+	mDBCallCount.SetName("noirai_db_latency_count")
 	mDBCallCount.SetUnit("1")
 	mDBCallCount.SetEmptySum().SetIsMonotonic(true)
 	mDBCallCount.Sum().SetAggregationTemporality(p.config.GetAggregationTemporality())
@@ -736,13 +736,13 @@ func (p *processorImp) collectDBCallMetrics(ilm pmetric.ScopeMetrics) error {
 
 func (p *processorImp) collectExternalCallMetrics(ilm pmetric.ScopeMetrics) error {
 	mExternalCallSum := ilm.Metrics().AppendEmpty()
-	mExternalCallSum.SetName("signoz_external_call_latency_sum")
+	mExternalCallSum.SetName("noirai_external_call_latency_sum")
 	mExternalCallSum.SetUnit("1")
 	mExternalCallSum.SetEmptySum().SetIsMonotonic(true)
 	mExternalCallSum.Sum().SetAggregationTemporality(p.config.GetAggregationTemporality())
 
 	mExternalCallCount := ilm.Metrics().AppendEmpty()
-	mExternalCallCount.SetName("signoz_external_call_latency_count")
+	mExternalCallCount.SetName("noirai_external_call_latency_count")
 	mExternalCallCount.SetUnit("1")
 	mExternalCallCount.SetEmptySum().SetIsMonotonic(true)
 	mExternalCallCount.Sum().SetAggregationTemporality(p.config.GetAggregationTemporality())
@@ -780,7 +780,7 @@ func (p *processorImp) collectExternalCallMetrics(ilm pmetric.ScopeMetrics) erro
 // into the given instrumentation library metrics.
 func (p *processorImp) collectCallMetrics(ilm pmetric.ScopeMetrics) error {
 	mCalls := ilm.Metrics().AppendEmpty()
-	mCalls.SetName("signoz_calls_total")
+	mCalls.SetName("noirai_calls_total")
 	mCalls.SetEmptySum().SetIsMonotonic(true)
 	mCalls.Sum().SetAggregationTemporality(p.config.GetAggregationTemporality())
 	dps := mCalls.Sum().DataPoints()
@@ -1187,11 +1187,11 @@ func (p *processorImp) buildDimensionKVs(serviceName string, span ptrace.Span, o
 	dims.PutStr(operationKey, spanName)
 	dims.PutStr(spanKindKey, SpanKindStr(span.Kind()))
 	dims.PutStr(statusCodeKey, StatusCodeStr(span.Status().Code()))
-	dims.PutStr(signozID, p.instanceID)
-	dims.PutStr(resourcePrefix+signozID, p.instanceID)
+	dims.PutStr(noiraiID, p.instanceID)
+	dims.PutStr(resourcePrefix+noiraiID, p.instanceID)
 	for _, d := range optionalDims {
 		// Already tagged above from the collector instance ID.
-		if d.name == signozID {
+		if d.name == noiraiID {
 			continue
 		}
 		v, ok, foundInResource := getDimensionValueWithResource(d, span.Attributes(), resourceAttrs)
@@ -1220,11 +1220,11 @@ func (p *processorImp) buildCustomDimensionKVs(serviceName string, span ptrace.S
 		v.CopyTo(dims.PutEmpty(k))
 	}
 	dims.PutStr(statusCodeKey, StatusCodeStr(span.Status().Code()))
-	dims.PutStr(signozID, p.instanceID)
-	dims.PutStr(resourcePrefix+signozID, p.instanceID)
+	dims.PutStr(noiraiID, p.instanceID)
+	dims.PutStr(resourcePrefix+noiraiID, p.instanceID)
 	for _, d := range optionalDims {
 		// Already tagged above from the collector instance ID.
-		if d.name == signozID {
+		if d.name == noiraiID {
 			continue
 		}
 		v, ok, foundInResource := getDimensionValueWithResource(d, span.Attributes(), resourceAttrs)

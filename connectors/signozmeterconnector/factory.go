@@ -1,4 +1,4 @@
-package signozmeterconnector
+package noiraimeterconnector
 
 import (
 	"context"
@@ -8,7 +8,7 @@ import (
 	"go.opentelemetry.io/collector/connector"
 	"go.opentelemetry.io/collector/consumer"
 
-	"github.com/SigNoz/signoz-otel-collector/connectors/signozmeterconnector/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/connectors/noiraimeterconnector/internal/metadata"
 )
 
 const (

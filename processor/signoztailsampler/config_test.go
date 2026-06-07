@@ -1,4 +1,4 @@
-package signoztailsampler
+package noiraitailsampler
 
 import (
 	"path/filepath"
@@ -10,7 +10,7 @@ import (
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/confmap/confmaptest"
 
-	"github.com/SigNoz/signoz-otel-collector/processor/signoztailsampler/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraitailsampler/internal/metadata"
 )
 
 func TestLoadConfig(t *testing.T) {

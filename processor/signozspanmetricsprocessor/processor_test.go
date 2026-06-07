@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package signozspanmetricsprocessor
+package noiraispanmetricsprocessor
 
 import (
 	"bytes"
@@ -46,9 +46,9 @@ import (
 	"go.uber.org/zap/zaptest/observer"
 	"google.golang.org/grpc/metadata"
 
-	"github.com/SigNoz/signoz-otel-collector/processor/signozspanmetricsprocessor/internal/cache"
-	genmetadata "github.com/SigNoz/signoz-otel-collector/processor/signozspanmetricsprocessor/internal/metadata"
-	"github.com/SigNoz/signoz-otel-collector/processor/signozspanmetricsprocessor/mocks"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraispanmetricsprocessor/internal/cache"
+	genmetadata "github.com/NoirAI/noirai-otel-collector/processor/noiraispanmetricsprocessor/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraispanmetricsprocessor/mocks"
 )
 
 const (
@@ -338,8 +338,8 @@ func TestAggregateMetricsDoesNotMutateSpans(t *testing.T) {
 
 	rss := traces.ResourceSpans()
 	for i := 0; i < rss.Len(); i++ {
-		_, found := rss.At(i).Resource().Attributes().Get(signozID)
-		assert.False(t, found, "%s must not be set on spans", signozID)
+		_, found := rss.At(i).Resource().Attributes().Get(noiraiID)
+		assert.False(t, found, "%s must not be set on spans", noiraiID)
 	}
 }
 
@@ -577,16 +577,16 @@ func verifyConsumeMetricsInput(t testing.TB, input pmetric.Metrics, expectedTemp
 
 	ilm := rm.At(0).ScopeMetrics()
 	require.Equal(t, 1, ilm.Len())
-	assert.Equal(t, "signozspanmetricsprocessor", ilm.At(0).Scope().Name())
+	assert.Equal(t, "noiraispanmetricsprocessor", ilm.At(0).Scope().Name())
 
 	m := ilm.At(0).Metrics()
-	// 6 metrics: signoz_calls_total, signoz_latency, signoz_db_latency_sum
-	// signoz_db_latency_count, signoz_external_latency_sum, signoz_external_latency_count
+	// 6 metrics: noirai_calls_total, noirai_latency, noirai_db_latency_sum
+	// noirai_db_latency_count, noirai_external_latency_sum, noirai_external_latency_count
 	require.Equal(t, 6, m.Len())
 
 	seenMetricIDs := make(map[metricID]bool)
 	// The first 3 data points are for call counts.
-	assert.Equal(t, "signoz_calls_total", m.At(0).Name())
+	assert.Equal(t, "noirai_calls_total", m.At(0).Name())
 	assert.Equal(t, expectedTemporality, m.At(0).Sum().AggregationTemporality())
 	assert.True(t, m.At(0).Sum().IsMonotonic())
 	callsDps := m.At(0).Sum().DataPoints()
@@ -601,7 +601,7 @@ func verifyConsumeMetricsInput(t testing.TB, input pmetric.Metrics, expectedTemp
 
 	seenMetricIDs = make(map[metricID]bool)
 	// The remaining 3 data points are for latency.
-	assert.Equal(t, "signoz_latency", m.At(1).Name())
+	assert.Equal(t, "noirai_latency", m.At(1).Name())
 	assert.Equal(t, "ms", m.At(1).Unit())
 	assert.Equal(t, expectedTemporality, m.At(1).Histogram().AggregationTemporality())
 	latencyDps := m.At(1).Histogram().DataPoints()
@@ -817,12 +817,12 @@ func TestBuildDimensionKVsTagsCollectorID(t *testing.T) {
 
 	dims := p.buildDimensionKVs("svc", ptrace.NewSpan(), nil, pcommon.NewMap())
 
-	v, ok := dims.Get(signozID)
-	require.True(t, ok, "%s must be present as a label", signozID)
+	v, ok := dims.Get(noiraiID)
+	require.True(t, ok, "%s must be present as a label", noiraiID)
 	assert.Equal(t, testID, v.Str())
 
-	rv, ok := dims.Get(resourcePrefix + signozID)
-	require.True(t, ok, "%s%s must be present as a label", resourcePrefix, signozID)
+	rv, ok := dims.Get(resourcePrefix + noiraiID)
+	require.True(t, ok, "%s%s must be present as a label", resourcePrefix, noiraiID)
 	assert.Equal(t, testID, rv.Str())
 }
 
@@ -900,10 +900,10 @@ func TestBuildKeyWithDimensions(t *testing.T) {
 		{
 			name: "resource attribute contains instance ID",
 			optionalDims: []dimension{
-				{name: signozID},
+				{name: noiraiID},
 			},
 			resourceAttrMap: map[string]interface{}{
-				signozID: testID,
+				noiraiID: testID,
 			},
 			wantKey: "ab\u0000c\u0000SPAN_KIND_UNSPECIFIED\u0000STATUS_CODE_UNSET\u0000test-instance-id",
 		},
@@ -1359,7 +1359,7 @@ func TestBuildMetricsTimestampAccuracy(t *testing.T) {
 		require.Equal(t, 1, metrics.ResourceMetrics().Len())
 		ilm := metrics.ResourceMetrics().At(0).ScopeMetrics()
 		require.Equal(t, 1, ilm.Len())
-		assert.Equal(t, "signozspanmetricsprocessor", ilm.At(0).Scope().Name())
+		assert.Equal(t, "noiraispanmetricsprocessor", ilm.At(0).Scope().Name())
 
 		// Get all metrics
 		allMetrics := ilm.At(0).Metrics()

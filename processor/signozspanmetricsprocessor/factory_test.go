@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package signozspanmetricsprocessor
+package noiraispanmetricsprocessor
 
 import (
 	"context"
@@ -25,7 +25,7 @@ import (
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/processor/processortest"
 
-	"github.com/SigNoz/signoz-otel-collector/processor/signozspanmetricsprocessor/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/processor/noiraispanmetricsprocessor/internal/metadata"
 )
 
 func TestNewProcessor(t *testing.T) {

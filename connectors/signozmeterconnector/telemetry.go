@@ -1,9 +1,9 @@
-package signozmeterconnector
+package noiraimeterconnector
 
 import (
 	"context"
 
-	"github.com/SigNoz/signoz-otel-collector/connectors/signozmeterconnector/internal/metadata"
+	"github.com/NoirAI/noirai-otel-collector/connectors/noiraimeterconnector/internal/metadata"
 	"go.opentelemetry.io/collector/connector"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/metric"
