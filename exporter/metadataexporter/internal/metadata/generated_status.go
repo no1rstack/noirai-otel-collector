@@ -8,7 +8,7 @@ import (
 
 var (
 	Type      = component.MustNewType("metadataexporter")
-	ScopeName = "github.com/NoirAI/noirai-otel-collector/exporter/metadataexporter"
+	ScopeName = "github.com/no1rstack/noirai-otel-collector/exporter/metadataexporter"
 )
 
 const (

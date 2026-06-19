@@ -17,7 +17,7 @@ import (
 	"go.opentelemetry.io/collector/config/confighttp"
 	"go.opentelemetry.io/collector/config/confignet"
 
-	"github.com/NoirAI/noirai-otel-collector/internal/common/testutil"
+	"github.com/no1rstack/noirai-otel-collector/internal/common/testutil"
 )
 
 const (

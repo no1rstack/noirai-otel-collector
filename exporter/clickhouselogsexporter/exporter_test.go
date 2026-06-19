@@ -8,10 +8,10 @@ import (
 
 	driver "github.com/ClickHouse/clickhouse-go/v2/lib/driver"
 	"github.com/DATA-DOG/go-sqlmock"
-	"github.com/NoirAI/noirai-otel-collector/pkg/pdatagen/plogsgen"
-	"github.com/NoirAI/noirai-otel-collector/utils"
 	"github.com/google/uuid"
 	"github.com/jellydator/ttlcache/v3"
+	"github.com/no1rstack/noirai-otel-collector/pkg/pdatagen/plogsgen"
+	"github.com/no1rstack/noirai-otel-collector/utils"
 	cmock "github.com/srikanthccv/ClickHouse-go-mock"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -20,7 +20,7 @@ import (
 	"go.opentelemetry.io/otel/metric/noop"
 	"go.uber.org/zap"
 
-	"github.com/NoirAI/noirai-otel-collector/exporter/clickhouselogsexporter/internal/metadata"
+	"github.com/no1rstack/noirai-otel-collector/exporter/clickhouselogsexporter/internal/metadata"
 )
 
 func eventually(t *testing.T, f func() bool) {

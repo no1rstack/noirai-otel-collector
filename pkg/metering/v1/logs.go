@@ -1,7 +1,7 @@
 package v1
 
 import (
-	"github.com/NoirAI/noirai-otel-collector/pkg/metering"
+	"github.com/no1rstack/noirai-otel-collector/pkg/metering"
 	"go.opentelemetry.io/collector/pdata/plog"
 	"go.uber.org/zap"
 )

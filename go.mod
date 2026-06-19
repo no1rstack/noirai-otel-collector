@@ -11,7 +11,7 @@ require (
 	github.com/Shopify/sarama v1.38.1
 	github.com/apache/thrift v0.23.0
 	github.com/aws/aws-sdk-go v1.55.8
-	github.com/bytedance/sonic v1.14.1
+	github.com/bytedance/sonic v1.15.2
 	github.com/cenkalti/backoff/v4 v4.3.0
 	github.com/expr-lang/expr v1.17.7
 	github.com/go-redis/redismock/v9 v9.2.0
@@ -420,7 +420,7 @@ require (
 	github.com/blang/semver/v4 v4.0.0 // indirect
 	github.com/buger/jsonparser v1.1.2 // indirect
 	github.com/bytedance/gopkg v0.1.3 // indirect
-	github.com/bytedance/sonic/loader v0.3.0 // indirect
+	github.com/bytedance/sonic/loader v0.5.1 // indirect
 	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
 	github.com/cihub/seelog v0.0.0-20170130134532-f561c5e57575 // indirect
 	github.com/cilium/ebpf v0.17.3 // indirect
@@ -888,10 +888,10 @@ require (
 )
 
 replace (
-	github.com/ClickHouse/ch-go v0.66.0 => github.com/NoirAI/ch-go v0.66.0-dd-sketch
-	github.com/ClickHouse/clickhouse-go/v2 v2.36.0 => github.com/NoirAI/clickhouse-go/v2 v2.36.0-dd-sketch
-	github.com/segmentio/ksuid => github.com/noirai/ksuid v1.0.4
-	github.com/vjeantet/grok => github.com/noirai/grok v1.0.3
+	github.com/ClickHouse/ch-go v0.66.0 => github.com/no1rstack/noirai-ch-go v0.66.0-dd-sketch
+	github.com/ClickHouse/clickhouse-go/v2 v2.36.0 => github.com/no1rstack/noirai-clickhouse-go/v2 v2.36.0-dd-sketch
+	github.com/segmentio/ksuid => github.com/no1rstack/noirai-ksuid v1.0.4
+	github.com/vjeantet/grok => github.com/no1rstack/noirai-grok v1.0.3
 
 	// using 0.23.0 as there is an issue with 0.24.0 stats that results in
 	// an error

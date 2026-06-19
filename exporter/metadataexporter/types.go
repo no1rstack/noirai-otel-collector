@@ -3,7 +3,7 @@ package metadataexporter
 import (
 	"sync"
 
-	"github.com/NoirAI/noirai-otel-collector/utils"
+	"github.com/no1rstack/noirai-otel-collector/utils"
 )
 
 // bitmasks for compact per-leaf type aggregation across a batch.

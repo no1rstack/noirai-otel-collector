@@ -4,9 +4,9 @@ import (
 	"fmt"
 
 	driver "github.com/ClickHouse/clickhouse-go/v2/lib/driver"
-	"github.com/NoirAI/noirai-otel-collector/usage"
 	"github.com/google/uuid"
 	"github.com/jellydator/ttlcache/v3"
+	"github.com/no1rstack/noirai-otel-collector/usage"
 	"go.opentelemetry.io/otel/metric"
 	"go.uber.org/zap"
 )

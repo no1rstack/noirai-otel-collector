@@ -4,8 +4,8 @@ import (
 	"context"
 
 	"github.com/ClickHouse/clickhouse-go/v2/lib/driver"
-	"github.com/NoirAI/noirai-otel-collector/utils/fingerprint"
-	"github.com/NoirAI/noirai-otel-collector/utils/flatten"
+	"github.com/no1rstack/noirai-otel-collector/utils/fingerprint"
+	"github.com/no1rstack/noirai-otel-collector/utils/flatten"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/plog"
 	"go.opentelemetry.io/collector/pipeline"

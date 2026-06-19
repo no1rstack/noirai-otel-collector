@@ -3,7 +3,7 @@ package opamp
 import (
 	"context"
 
-	"github.com/NoirAI/noirai-otel-collector/noiraicol"
+	"github.com/no1rstack/noirai-otel-collector/noiraicol"
 	"go.uber.org/zap"
 )
 

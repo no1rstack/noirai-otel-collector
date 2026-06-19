@@ -28,14 +28,14 @@ import (
 
 	"github.com/ClickHouse/clickhouse-go/v2"
 	driver "github.com/ClickHouse/clickhouse-go/v2/lib/driver"
-	"github.com/SigNoz/signoz-otel-collector/constants"
-	"github.com/SigNoz/signoz-otel-collector/internal/common"
-	"github.com/SigNoz/signoz-otel-collector/pkg/keycheck"
-	"github.com/SigNoz/signoz-otel-collector/usage"
-	"github.com/SigNoz/signoz-otel-collector/utils"
-	"github.com/SigNoz/signoz-otel-collector/utils/fingerprint"
 	"github.com/google/uuid"
 	"github.com/jellydator/ttlcache/v3"
+	"github.com/no1rstack/noirai-otel-collector/constants"
+	"github.com/no1rstack/noirai-otel-collector/internal/common"
+	"github.com/no1rstack/noirai-otel-collector/pkg/keycheck"
+	"github.com/no1rstack/noirai-otel-collector/usage"
+	"github.com/no1rstack/noirai-otel-collector/utils"
+	"github.com/no1rstack/noirai-otel-collector/utils/fingerprint"
 	"github.com/segmentio/ksuid"
 	"go.opencensus.io/stats"
 	"go.opencensus.io/stats/view"
@@ -57,7 +57,7 @@ const (
 	distributedLogsResourceV2        = "distributed_logs_v2_resource"
 	distributedLogsAttributeKeys     = "distributed_logs_attribute_keys"
 	distributedLogsResourceKeys      = "distributed_logs_resource_keys"
-	distributedColumnEvolutionTable  = constants.SignozMetadataDB + ".distributed_column_evolution_metadata"
+	distributedColumnEvolutionTable  = constants.NoirAIMetadataDB + ".distributed_column_evolution_metadata"
 	distributedLogsResourceV2Seconds = 1800
 	// language=ClickHouse SQL
 	insertLogsResourceSQLTemplate = `INSERT INTO %s.%s (
@@ -826,7 +826,7 @@ producerIteration:
 		zap.String("cost", duration.String()))
 
 	for k, v := range metrics {
-		_ = stats.RecordWithTags(ctx, []tag.Mutator{tag.Upsert(usage.TagTenantKey, k), tag.Upsert(usage.TagExporterIdKey, e.id.String())}, ExporterSigNozSentLogRecords.M(int64(v.Count)), ExporterSigNozSentLogRecordsBytes.M(int64(v.Size)))
+		_ = stats.RecordWithTags(ctx, []tag.Mutator{tag.Upsert(usage.TagTenantKey, k), tag.Upsert(usage.TagExporterIdKey, e.id.String())}, ExporterNoirAISentLogRecords.M(int64(v.Count)), ExporterNoirAISentLogRecordsBytes.M(int64(v.Size)))
 	}
 
 	return nil

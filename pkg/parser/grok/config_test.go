@@ -17,8 +17,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	noiraistanzaentry "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/entry"
-	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
+	noiraistanzaentry "github.com/no1rstack/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/entry"
+	noiraistanzahelper "github.com/no1rstack/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/entry"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator/operatortest"
 )

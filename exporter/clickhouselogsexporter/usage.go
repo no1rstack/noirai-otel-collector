@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/NoirAI/noirai-otel-collector/pkg/metering"
-	"github.com/NoirAI/noirai-otel-collector/usage"
 	"github.com/goccy/go-json"
 	"github.com/google/uuid"
+	"github.com/no1rstack/noirai-otel-collector/pkg/metering"
+	"github.com/no1rstack/noirai-otel-collector/usage"
 	"go.opencensus.io/metric/metricdata"
 	"go.opencensus.io/stats"
 	"go.opencensus.io/stats/view"
@@ -16,8 +16,8 @@ import (
 )
 
 const (
-	NoirAISentLogRecordsKey      = "singoz_sent_log_records"
-	NoirAISentLogRecordsBytesKey = "singoz_sent_log_records_bytes"
+	NoirAISentLogRecordsKey      = "noirai_sent_log_records"
+	NoirAISentLogRecordsBytesKey = "noirai_sent_log_records_bytes"
 	NoirAILogsCount              = "noirai_logs_count"
 	NoirAILogsBytes              = "noirai_logs_bytes"
 )

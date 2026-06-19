@@ -4,7 +4,7 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/NoirAI/noirai-otel-collector/pkg/pdatagen/pmetricsgen"
+	"github.com/no1rstack/noirai-otel-collector/pkg/pdatagen/pmetricsgen"
 	"github.com/stretchr/testify/assert"
 	"go.opentelemetry.io/collector/pdata/pmetric"
 	"go.uber.org/zap"

@@ -8,7 +8,7 @@ import (
 
 var (
 	Type      = component.MustNewType("clickhouselogsexporter")
-	ScopeName = "github.com/NoirAI/noirai-otel-collector/exporter/clickhouselogsexporter"
+	ScopeName = "github.com/no1rstack/noirai-otel-collector/exporter/clickhouselogsexporter"
 )
 
 const (

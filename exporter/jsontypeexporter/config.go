@@ -3,7 +3,7 @@ package jsontypeexporter
 import (
 	"errors"
 
-	"github.com/NoirAI/noirai-otel-collector/utils"
+	"github.com/no1rstack/noirai-otel-collector/utils"
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/config/configoptional"
 	"go.opentelemetry.io/collector/config/configretry"

@@ -8,7 +8,7 @@ import (
 
 var (
 	Type      = component.MustNewType("noiraijsontypeexporter")
-	ScopeName = "github.com/NoirAI/noirai-otel-collector/exporter/jsontypeexporter"
+	ScopeName = "github.com/no1rstack/noirai-otel-collector/exporter/jsontypeexporter"
 )
 
 const (

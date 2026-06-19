@@ -8,9 +8,9 @@ import (
 	"go.opentelemetry.io/collector/pdata/plog"
 	"go.uber.org/zap"
 
-	"github.com/NoirAI/noirai-otel-collector/pkg/pdatagen/plogsgen"
-	"github.com/NoirAI/noirai-otel-collector/utils"
 	lru "github.com/hashicorp/golang-lru/v2"
+	"github.com/no1rstack/noirai-otel-collector/pkg/pdatagen/plogsgen"
+	"github.com/no1rstack/noirai-otel-collector/utils"
 	mockhouse "github.com/srikanthccv/ClickHouse-go-mock"
 )
 

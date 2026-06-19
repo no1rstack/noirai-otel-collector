@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/NoirAI/noirai-otel-collector/usage"
 	"github.com/google/uuid"
+	"github.com/no1rstack/noirai-otel-collector/usage"
 	"go.opencensus.io/metric/metricdata"
 	"go.opencensus.io/stats"
 	"go.opencensus.io/stats/view"
@@ -13,8 +13,8 @@ import (
 )
 
 const (
-	NoirAISentSpansKey      = "singoz_sent_spans"
-	NoirAISentSpansBytesKey = "singoz_sent_spans_bytes"
+	NoirAISentSpansKey      = "noirai_sent_spans"
+	NoirAISentSpansBytesKey = "noirai_sent_spans_bytes"
 	NoirAISpansCount        = "noirai_spans_count"
 	NoirAISpansBytes        = "noirai_spans_bytes"
 )

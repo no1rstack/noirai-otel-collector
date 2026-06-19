@@ -3,9 +3,9 @@ package v1
 import (
 	"github.com/goccy/go-json"
 
-	"github.com/NoirAI/noirai-otel-collector/pkg/metering"
-	"github.com/NoirAI/noirai-otel-collector/pkg/schema/common"
-	schema "github.com/NoirAI/noirai-otel-collector/pkg/schema/traces"
+	"github.com/no1rstack/noirai-otel-collector/pkg/metering"
+	"github.com/no1rstack/noirai-otel-collector/pkg/schema/common"
+	schema "github.com/no1rstack/noirai-otel-collector/pkg/schema/traces"
 	"go.opentelemetry.io/collector/pdata/ptrace"
 	"go.uber.org/zap"
 )

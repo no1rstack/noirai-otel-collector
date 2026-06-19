@@ -10,8 +10,8 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/DATA-DOG/go-sqlmock"
-	"github.com/NoirAI/noirai-otel-collector/utils"
 	lru "github.com/hashicorp/golang-lru/v2"
+	"github.com/no1rstack/noirai-otel-collector/utils"
 	cmock "github.com/srikanthccv/ClickHouse-go-mock"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

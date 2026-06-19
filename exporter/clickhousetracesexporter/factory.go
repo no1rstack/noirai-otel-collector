@@ -28,7 +28,7 @@ import (
 	"go.opentelemetry.io/collector/exporter"
 	"go.opentelemetry.io/collector/exporter/exporterhelper"
 
-	"github.com/NoirAI/noirai-otel-collector/exporter/clickhousetracesexporter/internal/metadata"
+	"github.com/no1rstack/noirai-otel-collector/exporter/clickhousetracesexporter/internal/metadata"
 )
 
 func createDefaultConfig() component.Config {

@@ -10,10 +10,10 @@ import (
 
 	"github.com/ClickHouse/clickhouse-go/v2"
 	"github.com/ClickHouse/clickhouse-go/v2/lib/driver"
-	"github.com/SigNoz/signoz-otel-collector/constants"
-	"github.com/SigNoz/signoz-otel-collector/pkg/keycheck"
-	"github.com/SigNoz/signoz-otel-collector/utils"
 	lru "github.com/hashicorp/golang-lru/v2"
+	"github.com/no1rstack/noirai-otel-collector/constants"
+	"github.com/no1rstack/noirai-otel-collector/pkg/keycheck"
+	"github.com/no1rstack/noirai-otel-collector/utils"
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/exporter"
 	"go.opentelemetry.io/collector/pdata/pcommon"
@@ -23,7 +23,7 @@ import (
 )
 
 const (
-	distributedPathTypesTableName = constants.SignozMetadataDB + "." + constants.DistributedFieldKeysTable
+	distributedPathTypesTableName = constants.NoirAIMetadataDB + "." + constants.DistributedFieldKeysTable
 	defaultKeyCacheSize           = 10_000
 	ArraySeparator                = "[]."
 	ArraySuffix                   = "[]"

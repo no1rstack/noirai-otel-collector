@@ -8,7 +8,7 @@ import (
 
 var (
 	Type      = component.MustNewType("noirai_health_check")
-	ScopeName = "github.com/NoirAI/noirai-otel-collector/extension/healthcheckextension"
+	ScopeName = "github.com/no1rstack/noirai-otel-collector/extension/healthcheckextension"
 )
 
 const (

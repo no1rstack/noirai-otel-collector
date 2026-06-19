@@ -1,0 +1,3 @@
+package noiraistanzaentry
+
+const InternalTempAttributePrefix = "__noirailogspipelineprocessor_internal__"

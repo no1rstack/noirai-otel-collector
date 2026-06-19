@@ -8,8 +8,8 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/NoirAI/noirai-otel-collector/utils"
 	lru "github.com/hashicorp/golang-lru/v2"
+	"github.com/no1rstack/noirai-otel-collector/utils"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"go.opentelemetry.io/collector/pdata/pcommon"

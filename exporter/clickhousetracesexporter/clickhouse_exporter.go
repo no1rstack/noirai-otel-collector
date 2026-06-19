@@ -19,8 +19,8 @@ import (
 
 	"sync"
 
-	"github.com/NoirAI/noirai-otel-collector/usage"
 	"github.com/google/uuid"
+	"github.com/no1rstack/noirai-otel-collector/usage"
 	"go.opencensus.io/stats/view"
 	"go.opentelemetry.io/collector/exporter"
 	"go.opentelemetry.io/collector/pdata/ptrace"

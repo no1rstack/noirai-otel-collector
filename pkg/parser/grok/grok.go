@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	noirailogspipelinestanzaoperator "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator"
-	noiraistanzahelper "github.com/NoirAI/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
+	noirailogspipelinestanzaoperator "github.com/no1rstack/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator"
+	noiraistanzahelper "github.com/no1rstack/noirai-otel-collector/processor/noirailogspipelineprocessor/stanza/operator/helper"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/entry"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/pkg/stanza/operator"
 	"github.com/vjeantet/grok"

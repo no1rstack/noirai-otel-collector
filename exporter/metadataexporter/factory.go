@@ -12,7 +12,7 @@ import (
 	"go.opentelemetry.io/collector/exporter/exporterhelper"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
-	"github.com/NoirAI/noirai-otel-collector/exporter/metadataexporter/internal/metadata"
+	"github.com/no1rstack/noirai-otel-collector/exporter/metadataexporter/internal/metadata"
 )
 
 const (

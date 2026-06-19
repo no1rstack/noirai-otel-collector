@@ -10,7 +10,7 @@ import (
 	"go.opentelemetry.io/collector/exporter"
 	"go.opentelemetry.io/collector/exporter/exporterhelper"
 
-	"github.com/NoirAI/noirai-otel-collector/exporter/jsontypeexporter/internal/metadata"
+	"github.com/no1rstack/noirai-otel-collector/exporter/jsontypeexporter/internal/metadata"
 )
 
 // NewFactory creates JSON Type exporter factory.

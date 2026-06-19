@@ -978,10 +978,6 @@ github.com/Shopify/toxiproxy/v2 v2.5.0 h1:i4LPT+qrSlKNtQf5QliVjdP08GyAH8+BUIc9gT
 github.com/Shopify/toxiproxy/v2 v2.5.0/go.mod h1:yhM2epWtAmel9CB8r2+L+PCmhH6yH2pITaPAo7jxJl0=
 github.com/Showmax/go-fqdn v1.0.0 h1:0rG5IbmVliNT5O19Mfuvna9LL7zlHyRfsSvBPZmF9tM=
 github.com/Showmax/go-fqdn v1.0.0/go.mod h1:SfrFBzmDCtCGrnHhoDjuvFnKsWjEQX/Q9ARZvOrJAko=
-github.com/NoirAI/ch-go v0.66.0-dd-sketch h1:ldPYh5kapdBON4kgHIZFDyqA7rwj2EDwLDP0MsUu45g=
-github.com/NoirAI/ch-go v0.66.0-dd-sketch/go.mod h1:9qEsfQdutst6hqv9kmbNrbhhedvdoyz2pI0Rtj2eYug=
-github.com/NoirAI/clickhouse-go/v2 v2.36.0-dd-sketch h1:1Vpv9gvyTduWRvc7Y+qeX5sikp/fvm6NThIBwPMNfsQ=
-github.com/NoirAI/clickhouse-go/v2 v2.36.0-dd-sketch/go.mod h1:0WM6XxA9hmylH1EUPpHabfky0quPUZj6DpRiSSEq+RQ=
 github.com/aerospike/aerospike-client-go/v8 v8.5.1 h1:wItG15M1ZpWxU5JxJ+HYXYM9m29kwk8jkG5b/eLwDoI=
 github.com/aerospike/aerospike-client-go/v8 v8.5.1/go.mod h1:F3qwGJUMWOtqZha7O2VglfIDatH3Rj8wYhmI7bkHOfU=
 github.com/ajstarks/deck v0.0.0-20200831202436-30c9fc6549a9/go.mod h1:JynElWSGnm/4RlzPXRlREEwqTHAN3T56Bv2ITsFT3gY=
@@ -1143,8 +1139,12 @@ github.com/bytedance/gopkg v0.1.3 h1:TPBSwH8RsouGCBcMBktLt1AymVo2TVsBVCY4b6TnZ/M
 github.com/bytedance/gopkg v0.1.3/go.mod h1:576VvJ+eJgyCzdjS+c4+77QF3p7ubbtiKARP3TxducM=
 github.com/bytedance/sonic v1.14.1 h1:FBMC0zVz5XUmE4z9wF4Jey0An5FueFvOsTKKKtwIl7w=
 github.com/bytedance/sonic v1.14.1/go.mod h1:gi6uhQLMbTdeP0muCnrjHLeCUPyb70ujhnNlhOylAFc=
+github.com/bytedance/sonic v1.15.2 h1:90H+rcF/FwLXwfB1cudOLq/je83n683Utf4Cbp0xHCo=
+github.com/bytedance/sonic v1.15.2/go.mod h1:mT2NbXunuaEbnZ+mRIX/vYqKISmgEuHFDI4UzmKx2SA=
 github.com/bytedance/sonic/loader v0.3.0 h1:dskwH8edlzNMctoruo8FPTJDF3vLtDT0sXZwvZJyqeA=
 github.com/bytedance/sonic/loader v0.3.0/go.mod h1:N8A3vUdtUebEY2/VQC0MyhYeKUFosQU6FxH2JmUe6VI=
+github.com/bytedance/sonic/loader v0.5.1 h1:Ygpfa9zwRCCKSlrp5bBP/b/Xzc3VxsAW+5NIYXrOOpI=
+github.com/bytedance/sonic/loader v0.5.1/go.mod h1:AR4NYCk5DdzZizZ5djGqQ92eEhCCcdf5x77udYiSJRo=
 github.com/cenkalti/backoff/v4 v4.3.0 h1:MyRJ/UdXutAwSAT+s3wNd7MfTIcy71VQueUuFK343L8=
 github.com/cenkalti/backoff/v4 v4.3.0/go.mod h1:Y3VNntkOUPxTVeUxJ/G5vcM//AlwfmyYozVcomhLiZE=
 github.com/cenkalti/backoff/v5 v5.0.3 h1:ZN+IMa753KfX5hd8vVaMixjnqRZ3y8CuJKRKj1xcsSM=
@@ -1999,6 +1999,14 @@ github.com/netsampler/goflow2/v2 v2.2.6/go.mod h1:sKVfADpYP0NvkEeMRMh8/vz6T1yq4z
 github.com/nginx/nginx-prometheus-exporter v1.4.1 h1:sqA5VYSs4Rx8pX/NIE37yZR0gNlH1WYVZHONe38a93k=
 github.com/nginx/nginx-prometheus-exporter v1.4.1/go.mod h1:TEU3FUxQKBvVgRkPyMuq9kclmUp/x0/ocr3K/8F7At8=
 github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e/go.mod h1:zD1mROLANZcx1PVRCS0qkT7pwLkGfwJo4zjcN/Tysno=
+github.com/no1rstack/noirai-ch-go v0.66.0-dd-sketch h1:2BkvgFsy7YsAatAxffCrmMFYGObPnVPO0n/gwxX70ac=
+github.com/no1rstack/noirai-ch-go v0.66.0-dd-sketch/go.mod h1:9qEsfQdutst6hqv9kmbNrbhhedvdoyz2pI0Rtj2eYug=
+github.com/no1rstack/noirai-clickhouse-go/v2 v2.36.0-dd-sketch h1:OSWigWB9JY63/Jyf0WNp7RCiX8laJ5H1QV3JNUcXkEY=
+github.com/no1rstack/noirai-clickhouse-go/v2 v2.36.0-dd-sketch/go.mod h1:0WM6XxA9hmylH1EUPpHabfky0quPUZj6DpRiSSEq+RQ=
+github.com/no1rstack/noirai-grok v1.0.3 h1:aLHE20/j+parzTMYOygyodwKb03jwoUlaIfaesojRGM=
+github.com/no1rstack/noirai-grok v1.0.3/go.mod h1:ax1aAchzC6/QMXMcyzHQGZWaW1l195+uMYIkCWPCNIo=
+github.com/no1rstack/noirai-ksuid v1.0.4 h1:q8rCnjBf9kNkX6oarA5o+slrWjubsMPDyfg+3eA6C7Y=
+github.com/no1rstack/noirai-ksuid v1.0.4/go.mod h1:/XUiZBD3kVx5SmUOl55voK5yeAbBNNIed+2O73XgrPE=
 github.com/npillmayer/nestext v0.1.3/go.mod h1:h2lrijH8jpicr25dFY+oAJLyzlya6jhnuG+zWp9L0Uk=
 github.com/nxadm/tail v1.4.8 h1:nPr65rt6Y5JFSKQO7qToXr7pePgD6Gwiw05lkbyAQTE=
 github.com/nxadm/tail v1.4.8/go.mod h1:+ncqLTQzXmGhMZNUePPaPqPvBxHAIsmXswZKocGu+AU=
@@ -2700,10 +2708,6 @@ github.com/shurcooL/httpfs v0.0.0-20230704072500-f1e31cf0ba5c h1:aqg5Vm5dwtvL+Yg
 github.com/shurcooL/httpfs v0.0.0-20230704072500-f1e31cf0ba5c/go.mod h1:owqhoLW1qZoYLZzLnBw+QkPP9WZnjlSWihhxAJC1+/M=
 github.com/signalfx/com_signalfx_metrics_protobuf v0.0.3 h1:32k2QLgsKhcEs55q4REPKyIadvid5FPy2+VMgvbmKJ0=
 github.com/signalfx/com_signalfx_metrics_protobuf v0.0.3/go.mod h1:gJrXWi7wSGXfiC7+VheQaz+ypdCt5SmZNL+BRxUe7y4=
-github.com/noirai/grok v1.0.3 h1:JHPUTwOKf4YbrCwFYVxcaYAkk1PfjCpIG/6RX+juDOQ=
-github.com/noirai/grok v1.0.3/go.mod h1:ax1aAchzC6/QMXMcyzHQGZWaW1l195+uMYIkCWPCNIo=
-github.com/noirai/ksuid v1.0.4 h1:IYvJ6f1l+k7uIBhBvQ6ylKDIri/xPV4veNyynYFBvBE=
-github.com/noirai/ksuid v1.0.4/go.mod h1:RrW3wTiinIfVDx+Sg2QMa0iwQbDaZ1NLJ47u41DrJLs=
 github.com/sijms/go-ora/v2 v2.9.0 h1:+iQbUeTeCOFMb5BsOMgUhV8KWyrv9yjKpcK4x7+MFrg=
 github.com/sijms/go-ora/v2 v2.9.0/go.mod h1:QgFInVi3ZWyqAiJwzBQA+nbKYKH77tdp1PYoCqhR2dU=
 github.com/sirupsen/logrus v1.2.0/go.mod h1:LxeOpSwHxABJmUn/MG1IvRgCAasNZTLOkJPxbbu5VWo=
@@ -2771,6 +2775,7 @@ github.com/stretchr/testify v1.8.2/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o
 github.com/stretchr/testify v1.8.3/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=
 github.com/stretchr/testify v1.8.4/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=
 github.com/stretchr/testify v1.9.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
+github.com/stretchr/testify v1.10.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
 github.com/stretchr/testify v1.11.1 h1:7s2iGBzp5EwR7/aIZr8ao5+dra3wiQyKjjFuvgVKu7U=
 github.com/stretchr/testify v1.11.1/go.mod h1:wZwfW3scLgRK+23gO65QZefKpKQRnfz6sD981Nm4B6U=
 github.com/subosito/gotenv v1.6.0 h1:9NlTDc1FTs4qu0DDq7AEtTPNw6SVm7uBMsUCUjABIf8=

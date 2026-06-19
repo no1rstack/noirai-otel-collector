@@ -27,8 +27,8 @@ import (
 	"go.opentelemetry.io/collector/exporter"
 	"go.opentelemetry.io/collector/exporter/exporterhelper"
 
-	"github.com/NoirAI/noirai-otel-collector/exporter/clickhouselogsexporter/internal/metadata"
-	"github.com/NoirAI/noirai-otel-collector/utils"
+	"github.com/no1rstack/noirai-otel-collector/exporter/clickhouselogsexporter/internal/metadata"
+	"github.com/no1rstack/noirai-otel-collector/utils"
 )
 
 const (

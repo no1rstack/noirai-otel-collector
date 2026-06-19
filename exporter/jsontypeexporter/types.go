@@ -3,7 +3,7 @@ package jsontypeexporter
 import (
 	"sync"
 
-	"github.com/NoirAI/noirai-otel-collector/utils"
+	"github.com/no1rstack/noirai-otel-collector/utils"
 )
 
 const (
